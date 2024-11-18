@@ -17,13 +17,15 @@ if(isset($turnstileSettings['password']) && $turnstileSettings['password'] == 'o
 
 if(isset($turnstileSettings['comment']) && $turnstileSettings['comment'] == 'on'){
     // add html
-    add_filter( 'comment_form_defaults', function($args){
-      $html                 = getTurnstileHtml();
-      $args['submit_field'] = $html.$args['submit_field'];
-  
-      return $args;
-    } );
+    add_filter( 'comment_form_defaults', __NAMESPACE__.'\addFormElementTurnstile' );
 }
+function addFormElementTurnstile($args){
+    $html                 = getTurnstileHtml();
+    $args['submit_field'] = $html.$args['submit_field'];
+
+    return $args;
+  }
+
 
 function addTurnstileHtml(){
     // If the action we are hooking in was called more than once, return.

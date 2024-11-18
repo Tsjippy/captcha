@@ -30,10 +30,12 @@ function addRecaptchaHtml(){
 
 if(isset($recaptchaSettings['comment']) && $recaptchaSettings['comment'] == 'on'){
     // add html
-    add_filter( 'comment_form_defaults', function($args){
-      $html   = getRecaptchaHtml();
-      $args['submit_field']  = $html.$args['submit_field'];
-  
-      return $args;
-    } );
+    add_filter( 'comment_form_defaults',  __NAMESPACE__.'\addFormHtmlRecaptcha');
 }
+
+function addFormHtmlRecaptcha($args){
+    $html   = getRecaptchaHtml();
+    $args['submit_field']  = $html.$args['submit_field'];
+
+    return $args;
+  }
