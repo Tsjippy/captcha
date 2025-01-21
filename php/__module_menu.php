@@ -8,8 +8,6 @@ DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
 
 DEFINE(__NAMESPACE__.'\MODULE_SLUG', strtolower(basename(dirname(__DIR__))));
 
-DEFINE(__NAMESPACE__.'\MODULE_PATH', plugin_dir_path(__DIR__));
-
 add_filter('sim_submenu_options', __NAMESPACE__.'\subMenuOptions', 10, 4);
 function subMenuOptions($optionsHtml, $moduleSlug, $settings, $moduleName){
 	//module slug should be the same as grandparent folder name
