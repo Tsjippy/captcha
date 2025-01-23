@@ -2,6 +2,11 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
+// DO not run on localhost
+if($_SERVER['HTTP_HOST'] == 'localhost') {
+    return;
+}
+
 $turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
     add_action('login_form', __NAMESPACE__.'\addTurnstileHtml');
@@ -19,6 +24,7 @@ if(isset($turnstileSettings['comment']) && $turnstileSettings['comment'] == 'on'
     // add html
     add_filter( 'comment_form_defaults', __NAMESPACE__.'\addFormElementTurnstile' );
 }
+
 function addFormElementTurnstile($args){
     $html                 = getTurnstileHtml();
     $args['submit_field'] = $html.$args['submit_field'];
