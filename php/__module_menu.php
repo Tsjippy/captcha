@@ -19,7 +19,7 @@ function subMenuOptions($optionsHtml, $moduleSlug, $settings, $moduleName){
 	?>
     <br>
 	<br>
-	Do you want to use Google's reCaptcha? (<a href='https://www.google.com/recaptcha/admin/create'>See here</a>)
+	Do you want to use Google's reCaptcha? (<a href='https://www.google.com/recaptcha/admin/create' target='_blank'>See here</a>)
 	<label class="switch">
 		<input type="checkbox" name="recaptcha" <?php if(isset($settings['recaptcha'])){echo 'checked';}?>>
 		<span class="slider round"></span>
@@ -107,7 +107,7 @@ function subMenuOptions($optionsHtml, $moduleSlug, $settings, $moduleName){
 	?>
 	<br>
 	<br>
-	Do you want to use Cloudflare's Turnstile? (<a href='https://www.cloudflare.com/en-gb/products/turnstile/#Page-Pricing-AS'>See here</a>)
+	Do you want to use Cloudflare's Turnstile? (<a href='https://www.cloudflare.com/en-gb/products/turnstile/#Page-Pricing-AS' target='_blank'>See here</a>)
 	<label class="switch">
 		<input type="checkbox" name="turnstile" <?php if(isset($settings['turnstile'])){echo 'checked';}?>>
 		<span class="slider round"></span>
