@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- do not run on localhost
 
 ### Fixed
 
