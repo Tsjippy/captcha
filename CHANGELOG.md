@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- do not run on localhost
 
 ### Fixed
 
 ### Updated
+
+## [8.0.4] - 2025-02-09
+
+
+### Changed
+- do not run on localhost
 
 ## [8.0.3] - 2024-11-18
 
