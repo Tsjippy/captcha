@@ -2,18 +2,13 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- testkeys for localhost
 
 ### Changed
 
 ### Fixed
 
 ### Updated
-
-## [8.0.6] - 2025-08-14
-
-
-### Added
-- testkeys for localhost
 
 ## [8.0.5] - 2025-02-13
 
