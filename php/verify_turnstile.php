@@ -2,34 +2,30 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
-if(!isset($turnstileSettings)){
-    $turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
-}
-
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
-    add_filter( 'authenticate', __NAMESPACE__.'\turnstileFilter');
+    add_filter( 'authenticate', __NAMESPACE__.'\turnstileFilter', 99);
 }
 
 if(isset($turnstileSettings['newuser']) && $turnstileSettings['newuser'] == 'on'){
-    add_filter( 'registration_errors', __NAMESPACE__.'\turnstileFilter' );
+    add_filter( 'registration_errors', __NAMESPACE__.'\turnstileFilter', 99 );
 }
 
 if(isset($turnstileSettings['password']) && $turnstileSettings['password'] == 'on'){
-    add_filter( 'lostpassword_errors', __NAMESPACE__.'\turnstileFilter' );
+    add_filter( 'lostpassword_errors', __NAMESPACE__.'\turnstileFilter', 99 );
 }
 
 if(isset($turnstileSettings['comment']) && $turnstileSettings['comment'] == 'on'){
-    add_filter( 'lostpassword_errors', __NAMESPACE__.'\turnstileFilter' );
+    add_filter( 'lostpassword_errors', __NAMESPACE__.'\turnstileFilter', 99 );
 }
 
-function turnstileFilter($errors){
+function turnstileFilter($user){
     $verficationResult  = verifyTurnstile();
 
     if(is_wp_error($verficationResult)){
         return $verficationResult;
     }
 
-    return $errors;
+    return $user;
 }
 
 /**
@@ -39,7 +35,16 @@ function turnstileFilter($errors){
  */
 function verifyTurnstile(){
     if(!isset($_REQUEST['cf-turnstile-response'])){
-        return false;
+        return new \WP_Error('turnstile', "Invalid Turnstile Response!");
+    }
+
+    if(!isset($_SESSION)){
+		session_start();
+    }
+
+    // Do not verify again if already verified
+    if(isset($_SESSION['turnstile-verified']) && $_SESSION['turnstile-verified'] == true){
+        return true;
     }
 
     global $turnstileSettings;
@@ -51,8 +56,10 @@ function verifyTurnstile(){
     $json	    = verifyCaptcha($verifyUrl, $data);
 
     if(empty($json->success)){
-        return new \WP_Error('forms', "Invalid Turnstile Response!");
+        return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }else{
+        $_SESSION['turnstile-verified'] = true;
+
         return true;
     }
 }

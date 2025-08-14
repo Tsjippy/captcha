@@ -2,12 +2,16 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
-// DO not run on localhost
+$turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
+
+// Use test keys on localhost
 if($_SERVER['HTTP_HOST'] == 'localhost') {
-    return;
+    $turnstileSettings['key']       = '1x00000000000000000000AA'; // success
+    $turnstileSettings['key']       = '2x00000000000000000000AB'; // fail
+    $turnstileSettings['secretkey'] = '1x0000000000000000000000000000000AA'; // success
+    $turnstileSettings['secretkey'] = '2x0000000000000000000000000000000AA'; // fail
 }
 
-$turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
     add_action('login_form', __NAMESPACE__.'\addTurnstileHtml');
 }
