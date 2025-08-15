@@ -5,6 +5,7 @@
 - testkeys for localhost
 
 ### Changed
+- remove version from js sources
 
 ### Fixed
 
