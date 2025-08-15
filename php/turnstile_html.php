@@ -66,7 +66,7 @@ function printJsTurnstile(){
                 sitekey: '<?php echo $turnstileSettings["key"];?>',
                 callback: function(token) {
                     // Enable form submit again
-                    document.querySelectorAll('button').forEach(button => button.disabled = true);
+                    document.querySelectorAll('button').forEach(button => button.disabled = false);
 
                     document.querySelectorAll('.button.hidden').forEach(button => button.classList.remove('hidden'));
 
