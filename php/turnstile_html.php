@@ -2,7 +2,7 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
-function getTurnstileHtml($extraData=''){
+function getTurnstileHtml($extraData='', $class=''){
     global $turnstileSettings;
 
     $html           = '';
@@ -12,7 +12,7 @@ function getTurnstileHtml($extraData=''){
 
         printJsTurnstile();
 
-        $html	.= "<div class='cf-turnstile' $extraData></div>";
+        $html	.= "<div class='cf-turnstile $class' $extraData></div>";
     }
 
     return $html;
@@ -30,17 +30,24 @@ function printJsTurnstile(){
     $hasRun    = true;
     ?>
     <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
+        });
+
         document.addEventListener("click", async function(event){
             let target  = event.target;
             let form    = target.closest('form');
-            if(form != null){
-                let turnstile = form.querySelector('.cf-turnstile');
+            if(form != null || target.classList.contains('cf-turnstile')){
+                if(form == null){
+                    form = document.querySelector(target.dataset.form);
+                }
+
+                let turnstile = form.querySelector('div.cf-turnstile');
 
                 // Only load if not already loaded
                 if(turnstile != null && turnstile.innerHTML == ''){
                     if(turnstile.closest('.hidden') != null){
-                        console.log('Turnstile is hidden, not loading');
-                        return;
+                        turnstile.closest('.hidden').classList.remove('hidden');
                     }
 
                     // Disable form submit 

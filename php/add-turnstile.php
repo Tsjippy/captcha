@@ -12,6 +12,10 @@ if($_SERVER['HTTP_HOST'] == 'localhost') {
     #$turnstileSettings['secretkey'] = '2x0000000000000000000000000000000AA'; // fail
 }
 
+add_filter('sim-login-menu-item', function($html){
+    return str_replace("class='", "data-form='#login_modal' class='cf-turnstile ", $html);
+}, 10, 2);
+
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
     add_action('login_form', __NAMESPACE__.'\addTurnstileHtml');
 }
@@ -37,7 +41,7 @@ function addFormElementTurnstile($args){
   }
 
 
-function addTurnstileHtml($extraData = ''){
+function addTurnstileHtml($extraData = '', $class = '') {
     // If the action we are hooking in was called more than once, return.
     if ( 
         did_action( 'login_form' ) > 1 ||
@@ -48,9 +52,11 @@ function addTurnstileHtml($extraData = ''){
     }
 
     // reset pass is on the same page as login so make it hidden
-    if(current_filter() == 'resetpass_form'){
+    if(current_filter() == 'login_form'){
         //$extraData = "data-appearance='interaction-only'";
+
+        //$class  = 'now';
     }
 
-    echo getTurnstileHtml($extraData);
+    echo getTurnstileHtml($extraData, $class);
 };
