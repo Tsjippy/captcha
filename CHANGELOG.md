@@ -2,15 +2,22 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+
+### Changed
+
+### Fixed
+
+### Updated
+
+## [8.0.7] - 2025-08-15
+
+
+### Added
 - testkeys for localhost
 
 ### Changed
 - remove version from js sources
 - onload when needed
-
-### Fixed
-
-### Updated
 
 ## [8.0.5] - 2025-02-13
 
