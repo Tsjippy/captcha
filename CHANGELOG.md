@@ -6,6 +6,7 @@
 
 ### Changed
 - remove version from js sources
+- onload when needed
 
 ### Fixed
 
