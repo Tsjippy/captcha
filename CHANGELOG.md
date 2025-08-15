@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- load on custom element click
 
 ### Updated
+
+## [8.0.8] - 2025-08-15
+
+
+### Fixed
+- load on custom element click
 
 ## [8.0.7] - 2025-08-15
 
