@@ -6,9 +6,9 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__.'\loadAssets');
 function loadAssets(){
     $recaptchaKey		= SIM\getModuleOption(MODULE_SLUG, 'recaptchakey');
 
-    wp_register_script('sim_turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js', [], null, true);
+    wp_register_script('sim_turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', [], null, ['strategy' => 'defer', 'in_footer' => true]);
 
-    wp_register_script('sim_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], null, true);
+    wp_register_script('sim_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], null, ['strategy' => 'defer', 'in_footer' => true]);
 
-    wp_register_script('sim_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$recaptchaKey&onload=onloadCallback", [], null, true);
+    wp_register_script('sim_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$recaptchaKey&onload=onloadCallback", [], null, ['strategy' => 'defer', 'in_footer' => true]);
 }

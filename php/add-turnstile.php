@@ -7,9 +7,9 @@ $turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
 // Use test keys on localhost
 if($_SERVER['HTTP_HOST'] == 'localhost') {
     $turnstileSettings['key']       = '1x00000000000000000000AA'; // success
-    $turnstileSettings['key']       = '2x00000000000000000000AB'; // fail
+    #$turnstileSettings['key']       = '2x00000000000000000000AB'; // fail
     $turnstileSettings['secretkey'] = '1x0000000000000000000000000000000AA'; // success
-    $turnstileSettings['secretkey'] = '2x0000000000000000000000000000000AA'; // fail
+    #$turnstileSettings['secretkey'] = '2x0000000000000000000000000000000AA'; // fail
 }
 
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
@@ -37,7 +37,7 @@ function addFormElementTurnstile($args){
   }
 
 
-function addTurnstileHtml(){
+function addTurnstileHtml($extraData = ''){
     // If the action we are hooking in was called more than once, return.
     if ( 
         did_action( 'login_form' ) > 1 ||
@@ -47,11 +47,9 @@ function addTurnstileHtml(){
         return;
     }
 
-    $extraData	= '';
-
     // reset pass is on the same page as login so make it hidden
     if(current_filter() == 'resetpass_form'){
-        $extraData = "data-appearance='interaction-only'";
+        //$extraData = "data-appearance='interaction-only'";
     }
 
     echo getTurnstileHtml($extraData);
