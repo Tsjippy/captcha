@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- load on custom element click
 
 ### Updated
 
