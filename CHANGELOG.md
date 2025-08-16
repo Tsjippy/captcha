@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- bug with long turnstile tokens
 
 ### Updated
+
+## [8.1.0] - 2025-08-16
+
+
+### Fixed
+- bug with long turnstile tokens
 
 ## [8.0.9] - 2025-08-16
 
