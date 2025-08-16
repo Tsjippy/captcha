@@ -38,13 +38,14 @@ function verifyTurnstile(){
         return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }
 
-    
+    $turnstileToken = sanitize_text_field($_REQUEST['cf-turnstile-response']);
+
     if(!isset($_SESSION)){
 		session_start();
     }
 
     // Do not verify again if already verified
-    if(get_transient( $_REQUEST['cf-turnstile-response'] )){
+    if(get_transient( substr($turnstileToken, 0, 170) ) == $turnstileToken){
         return true;
     }
 
@@ -52,14 +53,14 @@ function verifyTurnstile(){
 
     $secret		= $turnstileSettings['secretkey'];
     $verifyUrl 	= "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-    $data		= "secret=$secret&response={$_REQUEST['cf-turnstile-response']}";
+    $data		= "secret=$secret&response=$turnstileToken";
 
     $json	    = verifyCaptcha($verifyUrl, $data);
 
     if(empty($json->success)){
         return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }else{
-        set_transient( $_REQUEST['cf-turnstile-response'], true, MINUTE_IN_SECONDS );
+        set_transient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
 
         return true;
     }
