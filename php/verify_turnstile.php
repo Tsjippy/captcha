@@ -38,12 +38,13 @@ function verifyTurnstile(){
         return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }
 
+    
     if(!isset($_SESSION)){
 		session_start();
     }
 
     // Do not verify again if already verified
-    if(isset($_SESSION['turnstile-verified']) && $_SESSION['turnstile-verified'] == true){
+    if(get_transient( $_REQUEST['cf-turnstile-response'] )){
         return true;
     }
 
@@ -58,7 +59,7 @@ function verifyTurnstile(){
     if(empty($json->success)){
         return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }else{
-        $_SESSION['turnstile-verified'] = true;
+        set_transient( $_REQUEST['cf-turnstile-response'], true, MINUTE_IN_SECONDS );
 
         return true;
     }
