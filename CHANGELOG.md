@@ -9,6 +9,12 @@
 
 ### Updated
 
+## [8.0.9] - 2025-08-16
+
+
+### Fixed
+- only verify a token once
+
 ## [8.0.8] - 2025-08-15
 
 
