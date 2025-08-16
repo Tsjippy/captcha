@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- bug with long turnstile tokens
 
 ### Updated
 
