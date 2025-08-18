@@ -4,6 +4,7 @@ use SIM;
 
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
     add_filter( 'authenticate', __NAMESPACE__.'\turnstileFilter', 99);
+    add_filter( 'sim-after-user-check', __NAMESPACE__.'\turnstileFilter', 99);
 }
 
 if(isset($turnstileSettings['newuser']) && $turnstileSettings['newuser'] == 'on'){

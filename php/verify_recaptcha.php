@@ -8,6 +8,7 @@ if(!isset($recaptchaSettings)){
 
 if(isset($recaptchaSettings['login']) && $recaptchaSettings['login'] == 'on'){
     add_filter( 'authenticate', __NAMESPACE__.'\recaptchaFilter');
+    add_filter( 'sim-after-user-check', __NAMESPACE__.'\recaptchaFilter');
 }
 
 if(isset($recaptchaSettings['newuser']) && $recaptchaSettings['newuser'] == 'on'){
