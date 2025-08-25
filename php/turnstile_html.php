@@ -56,7 +56,7 @@ function printJsTurnstile(){
                     form.querySelectorAll('.button').forEach(button => button.classList.add('hidden'));
 
                     // Load the turnstile
-                    loadTurnstile(form.querySelector(`.cf-turnstile`));
+                    loadTurnstile(turnstile);
                 }
             }
         });
@@ -77,3 +77,10 @@ function printJsTurnstile(){
     </script>
     <?php
 }
+
+// reset the has run var
+add_action('sim-content-filter-reset-page', function(){
+    global $hasRun;
+
+    $hasRun = false;
+});
