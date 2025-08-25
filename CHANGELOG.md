@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- bug when on a restricted content page
 
 ### Updated
 
