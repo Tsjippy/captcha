@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- bug when on a restricted content page
 
 ### Updated
+
+## [8.1.2] - 2025-08-25
+
+
+### Fixed
+- bug when on a restricted content page
 
 ## [8.1.1] - 2025-08-18
 
