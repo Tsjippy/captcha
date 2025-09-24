@@ -36,7 +36,7 @@ function turnstileFilter($user){
  */
 function verifyTurnstile(){
     if(!isset($_REQUEST['cf-turnstile-response'])){
-        return new \WP_Error('turnstile', "Invalid Turnstile Response!");
+        //return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }
 
     $turnstileToken = sanitize_text_field($_REQUEST['cf-turnstile-response']);
