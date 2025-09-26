@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- classnames replace _ with -
 
 ### Fixed
 
 ### Updated
+
+## [8.1.3] - 2025-09-26
+
+
+### Changed
+- classnames replace _ with -
 
 ## [8.1.2] - 2025-08-25
 
