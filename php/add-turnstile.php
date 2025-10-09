@@ -13,7 +13,7 @@ if($_SERVER['HTTP_HOST'] == 'localhost') {
 }
 
 add_filter('sim-login-menu-item', function($html){
-    return str_replace("class='", "data-form='#login_modal' class='cf-turnstile ", $html);
+    return str_replace("class='", "data-form='#login-modal' class='cf-turnstile ", $html);
 }, 10, 2);
 
 if(isset($turnstileSettings['login']) && $turnstileSettings['login'] == 'on'){
