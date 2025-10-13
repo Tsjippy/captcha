@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- data attribute names
 
 ### Fixed
 
 ### Updated
+
+## [8.1.4] - 2025-10-13
+
+
+### Changed
+- data attribute names
 
 ## [8.1.3] - 2025-09-26
 
