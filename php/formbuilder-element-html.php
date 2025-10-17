@@ -2,8 +2,9 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
-add_filter('sim-form-element-html', __NAMESPACE__.'\addCaptchaHtml', 99, 3);
-function addCaptchaHtml($html, $element, $object){
+add_filter('sim-form-element-html', __NAMESPACE__.'\addCaptchaHtml', 99, 2);
+function addCaptchaHtml($html, $object){
+    $element    = $object->element;
     switch($element->type){
         case 'hcaptcha':
             $html   = '';
