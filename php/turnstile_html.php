@@ -46,6 +46,8 @@ function printJsTurnstile(){
 
                 // Only load if not already loaded
                 if(turnstile != null && turnstile.innerHTML == ''){
+                    event.stopImmediatePropagation();
+                    
                     if(turnstile.closest('.hidden') != null){
                         turnstile.closest('.hidden').classList.remove('hidden');
                     }
