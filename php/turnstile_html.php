@@ -5,17 +5,15 @@ use SIM;
 function getTurnstileHtml($extraData='', $class=''){
     global $turnstileSettings;
 
-    $html           = '';
-
-    if($turnstileSettings && !empty($turnstileSettings["key"])){
-        wp_enqueue_script('sim_turnstile');
-
-        printJsTurnstile();
-
-        $html	.= "<div class='cf-turnstile $class' $extraData></div>";
+    if(!$turnstileSettings || empty($turnstileSettings["key"])){
+        return $extraData;
     }
 
-    return $html;
+    wp_enqueue_script('sim_turnstile');
+
+    printJsTurnstile();
+
+    return "<div class='cf-turnstile $class' $extraData></div>";
 }
 
 function printJsTurnstile(){
