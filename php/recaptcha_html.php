@@ -14,7 +14,7 @@ function getRecaptchaHtml(){
             wp_enqueue_script('sim_recaptcha_v3');
             ob_start();
             ?>
-            <input type='hidden' class='no-reset' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>
+            <input type='hidden' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>
             <script>
                 document.querySelectorAll('.submit-wrapper .form-submit').forEach(el=>el.disabled=true);
                 function onloadCallback(){
