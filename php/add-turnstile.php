@@ -5,7 +5,7 @@ use SIM;
 $turnstileSettings   = SIM\getModuleOption(MODULE_SLUG, 'turnstile');
 
 // Use test keys on localhost
-if($_SERVER['HTTP_HOST'] == 'localhost') {
+if($_SERVER['HTTP_HOST'] == 'localhost' || str_contains($_SERVER['HTTP_HOST'], '.local')) {
     $turnstileSettings['key']       = '1x00000000000000000000AA'; // success
     #$turnstileSettings['key']       = '2x00000000000000000000AB'; // fail
     $turnstileSettings['secretkey'] = '1x0000000000000000000000000000000AA'; // success
