@@ -2,14 +2,21 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- support for Local
 
 ### Changed
-- to node based html
 
 ### Fixed
 
 ### Updated
+
+## [8.1.8] - 2025-11-21
+
+
+### Added
+- support for Local
+
+### Changed
+- to node based html
 
 ## [8.1.7] - 2025-11-04
 
