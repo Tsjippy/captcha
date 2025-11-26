@@ -41,12 +41,8 @@ function verifyTurnstile(){
 
     $turnstileToken = sanitize_text_field($_REQUEST['cf-turnstile-response']);
 
-    if(!isset($_SESSION)){
-		session_start();
-    }
-
     // Do not verify again if already verified
-    if(get_transient( substr($turnstileToken, 0, 170) ) == $turnstileToken){
+    if(SIM\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken){
         return true;
     }
 
