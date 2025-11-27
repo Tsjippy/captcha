@@ -57,7 +57,7 @@ function verifyTurnstile(){
     if(empty($json->success)){
         return new \WP_Error('turnstile', "Invalid Turnstile Response!");
     }else{
-        set_transient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
+        SIM\storeInTransient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
 
         return true;
     }
