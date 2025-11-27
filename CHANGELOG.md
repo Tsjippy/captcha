@@ -4,12 +4,19 @@
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Updated
+
+## [8.2.0] - 2025-11-27
+
+
+### Changed
 - implemented getFromTransient
 
 ### Fixed
 - 2fa bug
-
-### Updated
 
 ## [8.1.8] - 2025-11-21
 
