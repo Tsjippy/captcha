@@ -7,6 +7,7 @@
 - implemented getFromTransient
 
 ### Fixed
+- 2fa bug
 
 ### Updated
 
