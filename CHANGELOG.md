@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- implemented getFromTransient
 
 ### Fixed
 
 ### Updated
+
+## [8.1.9] - 2025-11-27
+
+
+### Changed
+- implemented getFromTransient
 
 ## [8.1.8] - 2025-11-21
 
