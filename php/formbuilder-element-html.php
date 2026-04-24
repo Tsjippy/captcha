@@ -2,6 +2,10 @@
 namespace SIM\CAPTCHA;
 use SIM;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_filter('sim-form-element-html-short-circuit', __NAMESPACE__.'\addCaptchaHtml', 99, 2);
 function addCaptchaHtml($node, $object){
     $element    = $object->element;
@@ -44,24 +48,28 @@ function addCaptchaHtml($node, $object){
         case 'recaptcha':
             $html   = '';
             if(isset($_REQUEST['formbuilder'])){
-                $key		= SIM\getModuleOption(MODULE_SLUG, 'recaptchakey');
-                if(!$key){
+                $recaptchaKey		= Settings['recaptchakey'] ?? '';
+                if(!$recaptchaKey){
                     $html	.= "Please enter your recaptcha key in the module settings";
                 }else{
                     $html   .= "<img src'".SIM\pathToUrl(MODULE_PATH.'/pictures/recaptcha.png')."'>";
                 }
             }
-            $html   .= getRecaptchaHtml();
+
+            $captcha    = new Recaptcha();
+
+            $html   .= $captcha->addHtml(false);
 
             $node   = $object->addRawHtml($html, $object->dom);
             break;
         case 'turnstile':
-            $key	= SIM\getModuleOption(MODULE_SLUG, 'turnstilekey');
-            if(!$key){
+            $turnstilekey   = SETTINGS['turnstilekey'] ?? [];
+
+            $html	= '';
+            
+            if(!$turnstilekey){
                 if(isset($_REQUEST['formbuilder'])){
                     $html	= "Please enter your turnstile key in the module settings";
-                }else{
-                    $html	= '';
                 }
             }else{
                 $extraData	= '';
@@ -69,7 +77,10 @@ function addCaptchaHtml($node, $object){
                     $extraData	        = "data-appearance='interaction-only'";
                     $element->hidden	= false;
                 }
-                $html	= getTurnstileHtml($extraData);
+
+                $captcha    = new Turnstile();
+
+                $html   = $captcha->addHtml(false, $extraData);
             }
 
             $node   = $object->addRawHtml($html, $object->dom);
