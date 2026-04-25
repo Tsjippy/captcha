@@ -2,6 +2,7 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- trailing slash to pluginpath connstant
 
 ### Changed
 - module menu to class
