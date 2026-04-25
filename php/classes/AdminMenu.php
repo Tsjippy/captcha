@@ -177,7 +177,7 @@ class AdminMenu extends ADMIN\SubAdminMenu{
         </script>
         <?php
         
-        SIM\ADMIN\addRawHtml(ob_get_clean(), $parent, 'beforeEnd');
+        SIM\addRawHtml(ob_get_clean(), $parent, 'beforeEnd');
 
         return true;
     }
