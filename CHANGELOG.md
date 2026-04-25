@@ -7,6 +7,7 @@
 - module menu to class
 
 ### Fixed
+- pluginpath constantac
 
 ### Updated
 
