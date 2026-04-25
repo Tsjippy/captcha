@@ -52,7 +52,7 @@ function addCaptchaHtml($node, $object){
                 if(!$recaptchaKey){
                     $html	.= "Please enter your recaptcha key in the module settings";
                 }else{
-                    $html   .= "<img src'".SIM\pathToUrl(MODULE_PATH.'/pictures/recaptcha.png')."'>";
+                    $html   .= "<img src'".SIM\pathToUrl(PLUGINPATH.'pictures/recaptcha.png')."'>";
                 }
             }
 
