@@ -6,6 +6,7 @@
 
 ### Changed
 - module menu to class
+- sim prefix to tsjippy prefix
 
 ### Fixed
 - pluginpath constantac
