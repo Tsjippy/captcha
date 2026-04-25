@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_filter('sim-form-element-html-short-circuit', __NAMESPACE__.'\addCaptchaHtml', 99, 2);
+add_filter('tsjippy-form-element-html-short-circuit', __NAMESPACE__.'\addCaptchaHtml', 99, 2);
 function addCaptchaHtml($node, $object){
     $element    = $object->element;
     switch($element->type){
@@ -50,7 +50,7 @@ function addCaptchaHtml($node, $object){
             if(isset($_REQUEST['formbuilder'])){
                 $recaptchaKey		= Settings['recaptchakey'] ?? '';
                 if(!$recaptchaKey){
-                    $html	.= "Please enter your recaptcha key in the module settings";
+                    $html	.= "Please enter your recaptcha key in the plugin settings";
                 }else{
                     $html   .= "<img src'".SIM\pathToUrl(PLUGINPATH.'pictures/recaptcha.png')."'>";
                 }
@@ -69,7 +69,7 @@ function addCaptchaHtml($node, $object){
             
             if(!$turnstilekey){
                 if(isset($_REQUEST['formbuilder'])){
-                    $html	= "Please enter your turnstile key in the module settings";
+                    $html	= "Please enter your turnstile key in the plugin settings";
                 }
             }else{
                 $extraData	= '';

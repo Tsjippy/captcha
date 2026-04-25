@@ -21,7 +21,7 @@ function loginForm(){
  * Verify the captcha result
  */
 add_filter( 'authenticate', __NAMESPACE__.'\loginFormFilter', 99);
-add_filter( 'sim-after-user-check', __NAMESPACE__.'\loginFormFilter', 99);
+add_filter( 'tsjippy-after-user-check', __NAMESPACE__.'\loginFormFilter', 99);
 function loginFormFilter($user){
     if(is_wp_error($user)){
         return $user;
@@ -91,12 +91,12 @@ function commentFormfilter($approved){
 }
 
 
-add_filter('sim-login-menu-item', function($html){
+add_filter('tsjippy-login-menu-item', function($html){
     return str_replace("class='", "data-form='#login-modal' class='cf-turnstile ", $html);
 }, 10, 2);
 
 // reset the has run var
-add_action('sim-content-filter-reset-page', function(){
+add_action('tsjippy-content-filter-reset-page', function(){
     global $hasRun;
 
     $hasRun = false;
@@ -147,7 +147,7 @@ function captchaVerification($var, $formType){
 /**
  * Validates a SIM Form Captcha Form Submit
  */
-add_filter('sim_abefore_saving_formdata', __NAMESPACE__.'\verifyFormCaptcha', 10, 2);
+add_filter('tsjippy_before_saving_formdata', __NAMESPACE__.'\verifyFormCaptcha', 10, 2);
 function verifyFormCaptcha($verification, $object){
     if($object->getElementByType('turnstile')){
         $captcha    = new Turnstile();

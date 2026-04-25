@@ -37,7 +37,7 @@ class Turnstile extends Captcha{
             return $extraData;
         }
 
-        wp_enqueue_script('sim_turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+        wp_enqueue_script('tsjippy_turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
         $hasRun    = true;
 

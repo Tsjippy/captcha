@@ -27,14 +27,14 @@ class ReCaptcha extends Captcha{
         }
 
         if($this->keyType == 'v2'){
-            wp_enqueue_script('sim_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+            wp_enqueue_script('tsjippy_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
             ?>
             <div class='g-recaptcha $class' data-sitekey='<?php echo $this->key;?>' <?php echo $extraData;?> required>
             </div>
             <?php
         }else{
-            wp_enqueue_script('sim_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+            wp_enqueue_script('tsjippy_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
             ob_start();
             ?>
             <input type='hidden' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>
