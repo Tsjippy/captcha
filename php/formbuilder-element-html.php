@@ -1,6 +1,6 @@
 <?php
-namespace SIM\CAPTCHA;
-use SIM;
+namespace TSJIPPY\CAPTCHA;
+use TSJIPPY;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -14,7 +14,7 @@ function addCaptchaHtml($node, $object){
             $html   = '';
             if(isset($_REQUEST['install-hcaptcha'])){
                 ob_start();
-                if(SIM\ADMIN\installPlugin('hcaptcha-for-forms-and-more/hcaptcha.php') !== true){
+                if(TSJIPPY\ADMIN\installPlugin('hcaptcha-for-forms-and-more/hcaptcha.php') !== true){
                     // check if api is set
                     $options	= get_option('hcaptcha_settings');
 
@@ -33,10 +33,10 @@ function addCaptchaHtml($node, $object){
             $html	.= do_shortcode( '[hcaptcha auto="true" force="true"]' );
             if(str_contains($html, '[hcaptcha ')){
                 $message	= 'Please install the hcaptcha plugin before using this element';
-                SIM\printArray($message);
+                TSJIPPY\printArray($message);
                 $html	= '';
                 if(isset($_REQUEST['formbuilder'])){
-                    $url	= SIM\currentUrl().'&install-hcaptcha=true';
+                    $url	= TSJIPPY\currentUrl().'&install-hcaptcha=true';
                     $html	= $message." <a href='$url' class='button small'>Install now</a>";
                 }
             }else{
@@ -52,7 +52,7 @@ function addCaptchaHtml($node, $object){
                 if(!$recaptchaKey){
                     $html	.= "Please enter your recaptcha key in the plugin settings";
                 }else{
-                    $html   .= "<img src'".SIM\pathToUrl(PLUGINPATH.'pictures/recaptcha.png')."'>";
+                    $html   .= "<img src'".TSJIPPY\pathToUrl(PLUGINPATH.'pictures/recaptcha.png')."'>";
                 }
             }
 

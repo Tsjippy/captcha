@@ -1,7 +1,7 @@
 <?php
-namespace SIM\CAPTCHA;
-use SIM;
-use SIM\ADMIN;
+namespace TSJIPPY\CAPTCHA;
+use TSJIPPY;
+use TSJIPPY\ADMIN;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -177,7 +177,7 @@ class AdminMenu extends ADMIN\SubAdminMenu{
         </script>
         <?php
         
-        SIM\addRawHtml(ob_get_clean(), $parent, 'beforeEnd');
+        TSJIPPY\addRawHtml(ob_get_clean(), $parent, 'beforeEnd');
 
         return true;
     }

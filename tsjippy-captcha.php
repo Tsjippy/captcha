@@ -1,5 +1,5 @@
 <?php
-namespace SIM\CAPTCHA;
+namespace TSJIPPY\CAPTCHA;
 
 /**
  * Plugin Name:  		Tsjippy Captcha
@@ -13,6 +13,7 @@ namespace SIM\CAPTCHA;
  * Plugin URI:			https://github.com/Tsjippy/captcha/
  * Tested:				6.9
  * TextDomain:			tsjippy
+ * Requires Plugins:	tsjippy-shared-functionality
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
@@ -28,4 +29,5 @@ $pluginData = get_plugin_data(__FILE__, false, false);
 define(__NAMESPACE__ .'\PLUGIN', plugin_basename(__FILE__));
 define(__NAMESPACE__ .'\PLUGINPATH', __DIR__.'/');
 define(__NAMESPACE__ .'\PLUGINVERSION', $pluginData['Version']);
+define(__NAMESPACE__ .'\PLUGINSLUG', basename(__FILE__, '.php'));
 define(__NAMESPACE__ .'\SETTINGS', get_option('tsjippy_captcha_settings', []));

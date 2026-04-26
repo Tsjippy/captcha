@@ -1,5 +1,5 @@
 <?php
-namespace SIM\CAPTCHA;
+namespace TSJIPPY\CAPTCHA;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

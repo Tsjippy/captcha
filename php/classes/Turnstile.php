@@ -1,5 +1,5 @@
 <?php
-namespace SIM\CAPTCHA;
+namespace TSJIPPY\CAPTCHA;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -118,7 +118,7 @@ class Turnstile extends Captcha{
         $turnstileToken = sanitize_text_field(wp_unslash($_REQUEST['cf-turnstile-response']));
 
         // Do not verify again if already verified
-        if(\SIM\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken){
+        if(\TSJIPPY\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken){
             return true;
         }
 
@@ -130,7 +130,7 @@ class Turnstile extends Captcha{
         if(empty($json->success)){
             return new \WP_Error('turnstile', "Invalid Turnstile Response!");
         }else{
-            \SIM\storeInTransient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
+            \TSJIPPY\storeInTransient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
 
             return true;
         }
