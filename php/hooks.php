@@ -145,7 +145,7 @@ function captchaVerification($var, $formType){
 }
 
 /**
- * Validates a SIM Form Captcha Form Submit
+ * Validates a Form Captcha Form Submit
  */
 add_filter('tsjippy_before_saving_formdata', __NAMESPACE__.'\verifyFormCaptcha', 10, 2);
 function verifyFormCaptcha($verification, $object){
