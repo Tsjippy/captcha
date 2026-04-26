@@ -7,6 +7,7 @@
 ### Changed
 - module menu to class
 - sim prefix to tsjippy prefix
+- base namespace to TSJIPPY
 
 ### Fixed
 - pluginpath constantac
