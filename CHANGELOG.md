@@ -9,6 +9,7 @@
 - sim prefix to tsjippy prefix
 - base namespace to TSJIPPY
 - filternames to include tsjippy
+- PLUGINCONSTANT value
 
 ### Fixed
 - pluginpath constantac
