@@ -12,6 +12,7 @@
 - filternames to include tsjippy
 - PLUGINCONSTANT value
 - exclude .vscode from releases
+- github workflow update
 
 ### Fixed
 - pluginpath constantac
