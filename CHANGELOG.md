@@ -11,6 +11,7 @@
 - base namespace to TSJIPPY
 - filternames to include tsjippy
 - PLUGINCONSTANT value
+- exclude .vscode from releases
 
 ### Fixed
 - pluginpath constantac
