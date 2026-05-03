@@ -4,13 +4,18 @@
 ### Added
 
 ### Changed
-- updated github workflow versions
-- removed the redirection at activation as it is done by the share plugin
-- use shared github workflows
 
 ### Fixed
 
 ### Updated
+
+## [10.0.2] - 2026-05-03
+
+
+### Changed
+- updated github workflow versions
+- removed the redirection at activation as it is done by the share plugin
+- use shared github workflows
 
 ## [10.0.1] - 2026-05-01
 
