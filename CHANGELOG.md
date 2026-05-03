@@ -6,6 +6,7 @@
 ### Changed
 - updated github workflow versions
 - removed the redirection at activation as it is done by the share plugin
+- use shared github workflows
 
 ### Fixed
 
