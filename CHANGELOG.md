@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- increase arguments for addCaptchaHtml
 
 ### Updated
 
