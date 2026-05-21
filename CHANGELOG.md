@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- increase arguments for addCaptchaHtml
 
 ### Updated
+
+## [10.0.3] - 2026-05-21
+
+
+### Fixed
+- increase arguments for addCaptchaHtml
 
 ## [10.0.2] - 2026-05-03
 
