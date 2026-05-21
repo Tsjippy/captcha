@@ -6,8 +6,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_filter('tsjippy-form-element-html-short-circuit', __NAMESPACE__.'\addCaptchaHtml', 99, 2);
-function addCaptchaHtml($node, $object){
+add_filter('tsjippy-form-element-html-short-circuit', __NAMESPACE__.'\addCaptchaHtml', 99, 3);
+function addCaptchaHtml($node, $parent, $object){
     $element    = $object->element;
     switch($element->type){
         case 'hcaptcha':
