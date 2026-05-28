@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- empty attribute bug
 
 ### Updated
+
+## [10.0.4] - 2026-05-28
+
+
+### Fixed
+- empty attribute bug
 
 ## [10.0.3] - 2026-05-21
 
