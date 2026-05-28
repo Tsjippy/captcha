@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- empty attribute bug
 
 ### Updated
 
