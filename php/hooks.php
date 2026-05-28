@@ -126,12 +126,12 @@ function determineCaptchaType(){
  * 
  * @param   mixed           $var        The param received by the filter
  * @param   string          $formType   One of login, register, comment, or password
- * @return  object|WP_Error             The received user object or an WP_error object if verification failed
+ * @return  object|\WP_Error             The received user object or an WP_error object if verification failed
  */
 function captchaVerification($var, $formType){
     $captcha    = determineCaptchaType();
 
-    if(!$captcha->$formType){
+    if(empty($captcha->$formType)){
         return $var;
     }
     
