@@ -24,33 +24,33 @@ class AdminMenu extends ADMIN\SubAdminMenu{
         ?>
         <h4 style="margin-bottom: 0px;">Choose Captcha Engine</h4>
         <label>
-            <input type="radio" id="recaptcha" name="captcha" value="recaptcha" <?php echo isset($this->settings['captcha']) && $this->settings['captcha'] == 'recaptcha' ? 'checked' : ''; ?>>
+            <input type="radio" id="recaptcha" name="captcha" value="recaptcha" <?php echo ($this->settings['captcha'] ?? '') == 'recaptcha' ? 'checked' : ''; ?>>
             reCaptcha by Google (<a href='https://www.google.com/recaptcha/admin/create' target='_blank'>See here</a>)
         </label>
         <br>
         <label>
-            <input type="radio" id="turnstile" name="captcha" value="turnstile" <?php echo isset($this->settings['captcha']) && $this->settings['captcha'] == 'turnstile'  ? 'checked' : ''; ?>>
+            <input type="radio" id="turnstile" name="captcha" value="turnstile" <?php echo ($this->settings['captcha'] ?? '') == 'turnstile'  ? 'checked' : ''; ?>>
             Turnstile by Cloudflare (<a href='https://www.cloudflare.com/en-gb/products/turnstile/#Page-Pricing-AS' target='_blank'>See here</a>)
         </label>
 
         <br>
         <br>
 
-        <div class="captcha-options-wrapper recaptcha <?php echo !isset($this->settings['captcha']) || $this->settings['captcha'] != 'recaptcha' ? 'hidden' : ''; ?>">
+        <div class="captcha-options-wrapper recaptcha <?php echo esc_attr(($this->settings['captcha'] ?? 'recaptcha') != 'recaptcha' ? 'hidden' : ''); ?>">
             <label>
                 Your API key<br>
-                <input type='text' name='recaptcha[key]' value='<?php if(!empty($this->settings['recaptcha']["key"])){echo $this->settings['recaptcha']["key"];}?>' style='width:350px'>
+                <input type='text' name='recaptcha[key]' value='<?php echo esc_attr($this->settings['recaptcha']["key"] ?? '');?>' style='width:350px'>
             </label>
             <br>
             <br>
             <label>
                 API key type<br>
                 <label>
-                    <input type='radio' name='recaptcha[keytype]' value='v2' <?php if(!empty($this->settings['recaptcha']["keytype"]) && $this->settings['recaptcha']["keytype"] == 'v2'){echo 'checked';}?>>
+                    <input type='radio' name='recaptcha[keytype]' value='v2' <?php if(($this->settings['recaptcha']["keytype"] ?? '') == 'v2'){echo 'checked';}?>>
                     v2
                 </label>
                 <label>
-                    <input type='radio' name='recaptcha[keytype]' value='v3' <?php if(!empty($this->settings['recaptcha']["keytype"]) && $this->settings['recaptcha']["keytype"] == 'v3'){echo 'checked';}?>>
+                    <input type='radio' name='recaptcha[keytype]' value='v3' <?php if(($this->settings['recaptcha']["keytype"] ?? '') == 'v3'){echo 'checked';}?>>
                     v3 / Enterprise
                 </label>
             </label>
@@ -58,7 +58,7 @@ class AdminMenu extends ADMIN\SubAdminMenu{
             <br>
             <label>
                 Your secret key<br>
-                <input type='text' name='recaptcha[secret]' value='<?php if(!empty($this->settings['recaptcha']['secret'])){echo $this->settings['recaptcha']['secret'];}?>' style='width:350px'>
+                <input type='text' name='recaptcha[secret]' value='<?php echo esc_attr($this->settings['recaptcha']['secret'] ?? '');?>' style='width:350px'>
             </label>
             <br>
             <br>
@@ -110,15 +110,15 @@ class AdminMenu extends ADMIN\SubAdminMenu{
             </table>	
         </div>
 
-        <div class="captcha-options-wrapper turnstile <?php echo !isset($this->settings['captcha']) || $this->settings['captcha'] != 'turnstile' ? 'hidden' : ''; ?>">
+        <div class="captcha-options-wrapper turnstile <?php echo ($this->settings['captcha'] ?? 'recaptcha') != 'turnstile' ? 'hidden' : ''; ?>">
             <label>
                 Your API key<br>
-                <input type='text' name='turnstile[key]' value='<?php if(!empty($this->settings['turnstile']['key'])){echo $this->settings['turnstile']['key'];}?>' style='width:350px'>
+                <input type='text' name='turnstile[key]' value='<?php echo esc_attr($this->settings['turnstile']['key'] ?? '');?>' style='width:350px'>
             </label>
             <br>
             <label>
                 Your secret key<br>
-                <input type='text' name='turnstile[secretkey]' value='<?php if(!empty($this->settings['turnstile']['secretkey'])){echo $this->settings['turnstile']['secretkey'];}?>' style='width:350px'>
+                <input type='text' name='turnstile[secretkey]' value='<?php echo esc_attr($this->settings['turnstile']['secretkey'] ?? '');?>' style='width:350px'>
             </label>
             <br>
             <br>

@@ -21,7 +21,7 @@ function addCaptchaHtml($node, $parent, $object){
                     if(!$options || empty($options['site_key']) || empty($options['secret_key'])){
                         // redirect to the admin page to set an api key
                         if(current_user_can( 'manage_options' )){
-                            wp_redirect(admin_url('options-general.php?page=hcaptcha'));
+                            wp_safe_redirect((admin_url('options-general.php?page=hcaptcha')));
                         }else{
                             $html	.= "Installation succesfull.<br>Please make sure the hCaptcha api key is set";
                         }

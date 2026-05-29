@@ -30,7 +30,7 @@ class ReCaptcha extends Captcha{
             wp_enqueue_script('tsjippy_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
             ?>
-            <div class='g-recaptcha $class' data-sitekey='<?php echo $this->key;?>' <?php echo $extraData;?> required>
+            <div class='g-recaptcha $class' data-sitekey='<?php echo esc_attr($this->key);?>' <?php echo esc_attr($extraData);?> required>
             </div>
             <?php
         }else{
@@ -72,14 +72,14 @@ class ReCaptcha extends Captcha{
 
         $queryData = [
             'secret' 	=> $this->secret,
-            'response' 	=> $_REQUEST['g-recaptcha-response'],
-            'remoteip' 	=> (isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR'])
+            'response' 	=> sanitize_text_field($_REQUEST['g-recaptcha-response']),
+            'remoteip' 	=> sanitize_text_field((isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']))
         ];
 
         // Collect and build POST data
         $data = http_build_query($queryData, '', '&');
 
-        $json	= $this->verifyCaptcha($verifyUrl, $data, 'reCaptcha');
+        $json	= $this->verifyCaptcha($verifyUrl, $data);
 
         if(empty($json->success) || $json->score < 0.5){
             return new \WP_Error('forms', "Invalid Google Response!");

@@ -97,9 +97,9 @@ add_filter('tsjippy-login-menu-item', function($html){
 
 // reset the has run var
 add_action('tsjippy-content-filter-reset-page', function(){
-    global $hasRun;
+    global $tsjippyCaptchaHasRun;
 
-    $hasRun = false;
+    $tsjippyCaptchaHasRun = false;
 });
 
 

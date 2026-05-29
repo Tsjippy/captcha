@@ -1,19 +1,20 @@
 <?php
 namespace TSJIPPY\CAPTCHA;
+use TSJIPPY;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
 class Turnstile extends Captcha{
-    public $keyType;
+    public string $keyType;
 
     public function __construct(){
         $this->settings     = SETTINGS['turnstile'] ?? [];
 
-        $this->key          = $this->settings['key'];
+        $this->key          = $this->settings['key'] ?? '';
         $this->keyType      = $this->settings['keytype'] ?? 'v2';
-        $this->secret       = $this->settings['secretkey'];
+        $this->secret       = $this->settings['secretkey'] ?? '';
 
         $this->login        = $this->settings['login'] ?? false;
         $this->register     = $this->settings['newuser'] ?? false;
@@ -30,23 +31,25 @@ class Turnstile extends Captcha{
     }
 
     public function getHtml($print=true, $extraData='', $class=''){
-        global $hasRun;
+        global $tsjippyCaptchaHasRun;
 
         // Do not run twice
-        if($hasRun || empty($this->key )){
+        if($tsjippyCaptchaHasRun || empty($this->key )){
             return $extraData;
         }
 
-        wp_enqueue_script('tsjippy_turnstile', 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit', [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+        $url    = "https://challenges.cloudflare.com/turnstile/v0/api.js"; // online url, disallowed by wp
+        //$url    = TSJIPPY\pathToUrl(PLUGINPATH.'js/turnstile.min.js'); // Does not work
+        wp_enqueue_script('tsjippy_turnstile', "$url?render=explicit", [], 0, ['strategy' => 'defer', 'in_footer' => true]);
 
-        $hasRun    = true;
+        $tsjippyCaptchaHasRun    = true;
 
         if(!$print){
             ob_start();
         }
 
         ?>
-        <div class='cf-turnstile <?php echo $class;?>' <?php echo $extraData;?>></div>
+        <div class='cf-turnstile <?php echo esc_attr($class);?>' <?php echo esc_attr($extraData);?>></div>
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
@@ -85,7 +88,7 @@ class Turnstile extends Captcha{
 
             function loadTurnstile(target) {
                 turnstile.render(target, {
-                    sitekey: '<?php echo $this->key;?>',
+                    sitekey: '<?php echo esc_attr($this->key);?>',
                     callback: function(token) {
                         // Enable form submit again
                         document.querySelectorAll('button').forEach(button => button.disabled = false);
@@ -107,7 +110,7 @@ class Turnstile extends Captcha{
     /**
     * Verifies a turnstile token from $_REQUEST
     *
-    * @return	bool|WP_Error			false if no token found|WP_Error if invalid token, true is success
+    * @return	bool|\WP_Error			false if no token found|WP_Error if invalid token, true is success
     */
     public function verify(){
         if(!isset($_REQUEST['cf-turnstile-response'])){
