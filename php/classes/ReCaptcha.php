@@ -43,7 +43,7 @@ class ReCaptcha extends Captcha{
                 function onloadCallback(){
                     grecaptcha.ready(function() {
                         setInterval(function(){
-                            grecaptcha.execute('<?php echo $this->key;?>', {action: 'validate_captcha'}).then(function(token) {
+                            grecaptcha.execute('<?php echo esc_attr($this->key);?>', {action: 'validate_captcha'}).then(function(token) {
                                 document.querySelectorAll('.submit-wrapper .form-submit[disabled]').forEach(el=>el.disabled=false);
                                 console.log( 'refreshed token:', token );
                                 document.getElementById('g-recaptcha-response').value = token;
@@ -72,8 +72,8 @@ class ReCaptcha extends Captcha{
 
         $queryData = [
             'secret' 	=> $this->secret,
-            'response' 	=> sanitize_text_field($_REQUEST['g-recaptcha-response']),
-            'remoteip' 	=> sanitize_text_field((isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR']))
+            'response' 	=> sanitize_text_field(wp_unslash($_REQUEST['g-recaptcha-response'])),
+            'remoteip' 	=> sanitize_text_field(wp_unslash((isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR'])))
         ];
 
         // Collect and build POST data
