@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- security changes
 
 ### Fixed
 
 ### Updated
+
+## [10.0.5] - 2026-05-29
+
+
+### Changed
+- security changes
 
 ## [10.0.4] - 2026-05-28
 
