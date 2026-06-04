@@ -2,8 +2,8 @@
 namespace TSJIPPY\CAPTCHA;
 use TSJIPPY;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if ( ! defined('ABSPATH')) {
+    exit;
 }
 
 abstract class Captcha{
@@ -16,16 +16,16 @@ abstract class Captcha{
     public $comment;
 
 
-    public function __construct(){
+    public function __construct() {
     }
 
-    public function addHtml($print=true, $extraData='', $class=''){
+    public function addHtml($print=true, $extraData='', $class='') {
         // If the action we are hooking in was called more than once, return.
-        if ( 
-            did_action( 'login_form' ) > 1 ||
-            did_action( 'register_form' ) > 1 ||
-            did_action( 'resetpass_form' ) > 1 
-        ) {
+        if (
+            did_action('login_form') > 1 ||
+            did_action('register_form') > 1 ||
+            did_action('resetpass_form') > 1
+       ) {
             return;
         }
 
@@ -34,7 +34,7 @@ abstract class Captcha{
 
     abstract function getHtml($print, $extraData='', $class='');
 
-    public function addFormElement($args){
+    public function addFormElement($args) {
         $html                 = $this->addHtml(false);
         $args['submit_field'] = $html.$args['submit_field'];
 
@@ -44,7 +44,7 @@ abstract class Captcha{
     /**
     * Generic function to retrieve token status for captchas
     */
-    public function verifyCaptcha($verifyUrl, $data){
+    public function verifyCaptcha($verifyUrl, $data) {
         $response   = wp_remote_post($verifyUrl, ['body' => $data]);
 
         return json_decode($response['http_response']->get_data());
@@ -53,7 +53,7 @@ abstract class Captcha{
     /**
     * Verifies a turnstile token from $_REQUEST
     *
-    * @return	bool|WP_Error			false if no token found|WP_Error if invalid token, true is success
+    * @return    bool|WP_Error            false if no token found|WP_Error if invalid token, true is success
     */
     abstract function verify();
 }

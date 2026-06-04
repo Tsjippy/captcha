@@ -2,14 +2,14 @@
 namespace TSJIPPY\CAPTCHA;
 use TSJIPPY;
 
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
+if ( ! defined('ABSPATH')) {
+    exit;
 }
 
 class Turnstile extends Captcha{
     public string $keyType;
 
-    public function __construct(){
+    public function __construct() {
         $this->settings     = SETTINGS['turnstile'] ?? [];
 
         $this->key          = $this->settings['key'] ?? '';
@@ -22,7 +22,7 @@ class Turnstile extends Captcha{
         $this->comment      = $this->settings['comment'] ?? false;
 
         // Use test keys on localhost
-        if(wp_get_environment_type() === 'local') {
+        if (wp_get_environment_type() === 'local') {
             $this->key          = '1x00000000000000000000AA'; // success
             #$this->key         = '2x00000000000000000000AB'; // fail
             $this->secret       = '1x0000000000000000000000000000000AA'; // success
@@ -30,21 +30,21 @@ class Turnstile extends Captcha{
         }
     }
 
-    public function getHtml($print=true, $extraData='', $class=''){
+    public function getHtml($print=true, $extraData='', $class='') {
         global $tsjippyCaptchaHasRun;
 
         // Do not run twice
-        if($tsjippyCaptchaHasRun || empty($this->key )){
+        if ($tsjippyCaptchaHasRun || empty($this->key)) {
             return $extraData;
         }
 
         $url    = "https://challenges.cloudflare.com/turnstile/v0/api.js"; // online url, disallowed by wp
-        //$url    = TSJIPPY\pathToUrl(PLUGINPATH.'js/turnstile.min.js'); // Does not work
+        //$url    = TSJIPPY\pathToUrl(PLUGINPATH. 'js/turnstile.min.js'); // Does not work
         wp_enqueue_script('tsjippy_turnstile', "$url?render=explicit", [], 0, ['strategy' => 'defer', 'in_footer' => true]);
 
         $tsjippyCaptchaHasRun    = true;
 
-        if(!$print){
+        if (!$print) {
             ob_start();
         }
 
@@ -53,32 +53,32 @@ class Turnstile extends Captcha{
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
+                document.querySelectorAll(' .cf-turnstile.now').foreach (el => loadTurnstile(el));
             });
 
             // Load turnstile as soon as we click on the form
-            document.addEventListener("click", async function(event){
+            document.addEventListener("click", async function (event) {
                 let target  = event.target;
                 let form    = target.closest('form');
-                if(form != null || target.classList.contains('cf-turnstile')){
-                    if(form == null){
+                if (form != null || target.classList.contains('cf-turnstile')) {
+                    if (form == null) {
                         form = document.querySelector(target.dataset.form);
                     }
 
                     let turnstileDiv = form.querySelector('div.cf-turnstile');
 
                     // Only load if not already loaded
-                    if(turnstileDiv != null && turnstileDiv.innerHTML == ''){
+                    if (turnstileDiv != null && turnstileDiv.innerHTML == '') {
                         event.stopImmediatePropagation();
-                        
-                        if(turnstileDiv.closest('.hidden') != null){
-                            turnstileDiv.closest('.hidden').classList.remove('hidden');
+
+                        if (turnstileDiv.closest(' .hidden') != null) {
+                            turnstileDiv.closest(' .hidden').classList.remove('hidden');
                         }
 
-                        // Disable form submit 
-                        form.querySelectorAll('button').forEach(button => button.disabled = true);
+                        // Disable form submit
+                        form.querySelectorAll('button').foreach (button => button.disabled = true);
 
-                        form.querySelectorAll('.button').forEach(button => button.classList.add('hidden'));
+                        form.querySelectorAll(' .button').foreach (button => button.classList.add('hidden'));
 
                         // Load the turnstile
                         loadTurnstile(turnstileDiv);
@@ -89,11 +89,11 @@ class Turnstile extends Captcha{
             function loadTurnstile(target) {
                 turnstile.render(target, {
                     sitekey: '<?php echo esc_attr($this->key);?>',
-                    callback: function(token) {
+                    callback: function (token) {
                         // Enable form submit again
-                        document.querySelectorAll('button').forEach(button => button.disabled = false);
+                        document.querySelectorAll('button').foreach (button => button.disabled = false);
 
-                        document.querySelectorAll('.button.hidden').forEach(button => button.classList.remove('hidden'));
+                        document.querySelectorAll(' .button.hidden').foreach (button => button.classList.remove('hidden'));
 
                         console.log('Challenge completed:', token);
                     }
@@ -102,7 +102,7 @@ class Turnstile extends Captcha{
         </script>
         <?php
 
-        if(!$print){
+        if (!$print) {
             return ob_get_clean();
         }
     }
@@ -110,10 +110,10 @@ class Turnstile extends Captcha{
     /**
     * Verifies a turnstile token from $_REQUEST
     *
-    * @return	bool|\WP_Error			false if no token found|WP_Error if invalid token, true is success
+    * @return    bool|\WP_Error            false if no token found|WP_Error if invalid token, true is success
     */
-    public function verify(){
-        if(!isset($_REQUEST['cf-turnstile-response'])){
+    public function verify() {
+        if (!isset($_REQUEST['cf-turnstile-response'])) {
             //return new \WP_Error('turnstile', "Invalid Turnstile Response!");
             return false;
         }
@@ -121,19 +121,19 @@ class Turnstile extends Captcha{
         $turnstileToken = sanitize_text_field(wp_unslash($_REQUEST['cf-turnstile-response']));
 
         // Do not verify again if already verified
-        if(\TSJIPPY\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken){
+        if (\TSJIPPY\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken) {
             return true;
         }
 
-        $verifyUrl 	= "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-        $data		= "secret={$this->secret}&response=$turnstileToken";
+        $verifyUrl     = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+        $data        = "secret={$this->secret}&response=$turnstileToken";
 
-        $json	    = $this->verifyCaptcha($verifyUrl, $data);
+        $json        = $this->verifyCaptcha($verifyUrl, $data);
 
-        if(empty($json->success)){
+        if (empty($json->success)) {
             return new \WP_Error('turnstile', "Invalid Turnstile Response!");
         }else{
-            \TSJIPPY\storeInTransient( substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS );
+            \TSJIPPY\storeInTransient(substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS);
 
             return true;
         }
