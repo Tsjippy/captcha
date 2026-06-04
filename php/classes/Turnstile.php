@@ -1,15 +1,19 @@
 <?php
+
 namespace TSJIPPY\CAPTCHA;
+
 use TSJIPPY;
 
-if ( ! defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
-class Turnstile extends Captcha{
+class Turnstile extends Captcha
+{
     public string $keyType;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->settings     = SETTINGS['turnstile'] ?? [];
 
         $this->key          = $this->settings['key'] ?? '';
@@ -30,7 +34,8 @@ class Turnstile extends Captcha{
         }
     }
 
-    public function getHtml($print=true, $extraData='', $class='') {
+    public function getHtml($print = true, $extraData = '', $class = '')
+    {
         global $tsjippyCaptchaHasRun;
 
         // Do not run twice
@@ -48,18 +53,18 @@ class Turnstile extends Captcha{
             ob_start();
         }
 
-        ?>
-        <div class='cf-turnstile <?php echo esc_attr($class);?>' <?php echo esc_attr($extraData);?>></div>
+?>
+        <div class='cf-turnstile <?php echo esc_attr($class); ?>' <?php echo esc_attr($extraData); ?>></div>
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll(' .cf-turnstile.now').foreach (el => loadTurnstile(el));
+                document.querySelectorAll(' .cf-turnstile.now').foreach(el => loadTurnstile(el));
             });
 
             // Load turnstile as soon as we click on the form
-            document.addEventListener("click", async function (event) {
-                let target  = event.target;
-                let form    = target.closest('form');
+            document.addEventListener("click", async function(event) {
+                let target = event.target;
+                let form = target.closest('form');
                 if (form != null || target.classList.contains('cf-turnstile')) {
                     if (form == null) {
                         form = document.querySelector(target.dataset.form);
@@ -76,9 +81,9 @@ class Turnstile extends Captcha{
                         }
 
                         // Disable form submit
-                        form.querySelectorAll('button').foreach (button => button.disabled = true);
+                        form.querySelectorAll('button').foreach(button => button.disabled = true);
 
-                        form.querySelectorAll(' .button').foreach (button => button.classList.add('hidden'));
+                        form.querySelectorAll(' .button').foreach(button => button.classList.add('hidden'));
 
                         // Load the turnstile
                         loadTurnstile(turnstileDiv);
@@ -88,19 +93,19 @@ class Turnstile extends Captcha{
 
             function loadTurnstile(target) {
                 turnstile.render(target, {
-                    sitekey: '<?php echo esc_attr($this->key);?>',
-                    callback: function (token) {
+                    sitekey: '<?php echo esc_attr($this->key); ?>',
+                    callback: function(token) {
                         // Enable form submit again
-                        document.querySelectorAll('button').foreach (button => button.disabled = false);
+                        document.querySelectorAll('button').foreach(button => button.disabled = false);
 
-                        document.querySelectorAll(' .button.hidden').foreach (button => button.classList.remove('hidden'));
+                        document.querySelectorAll(' .button.hidden').foreach(button => button.classList.remove('hidden'));
 
                         console.log('Challenge completed:', token);
                     }
                 });
             }
         </script>
-        <?php
+<?php
 
         if (!$print) {
             return ob_get_clean();
@@ -108,11 +113,12 @@ class Turnstile extends Captcha{
     }
 
     /**
-    * Verifies a turnstile token from $_REQUEST
-    *
-    * @return    bool|\WP_Error            false if no token found|WP_Error if invalid token, true is success
-    */
-    public function verify() {
+     * Verifies a turnstile token from $_REQUEST
+     *
+     * @return    bool|\WP_Error            false if no token found|WP_Error if invalid token, true is success
+     */
+    public function verify()
+    {
         if (!isset($_REQUEST['cf-turnstile-response'])) {
             //return new \WP_Error('turnstile', "Invalid Turnstile Response!");
             return false;
@@ -132,7 +138,7 @@ class Turnstile extends Captcha{
 
         if (empty($json->success)) {
             return new \WP_Error('turnstile', "Invalid Turnstile Response!");
-        }else{
+        } else {
             \TSJIPPY\storeInTransient(substr($turnstileToken, 0, 170), $turnstileToken, MINUTE_IN_SECONDS);
 
             return true;

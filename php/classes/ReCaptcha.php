@@ -1,15 +1,18 @@
 <?php
+
 namespace TSJIPPY\CAPTCHA;
 
-if ( ! defined('ABSPATH')) {
+if (! defined('ABSPATH')) {
     exit;
 }
 
-class ReCaptcha extends Captcha{
+class ReCaptcha extends Captcha
+{
     public $secretKey;
     public $keyType;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->settings   = SETTINGS['turnstile'] ?? [];
 
         $this->key        = $this->settings['key'];
@@ -17,7 +20,8 @@ class ReCaptcha extends Captcha{
         $this->secretKey  = $this->settings['secretkey'];
     }
 
-    public function getHtml($print=true, $extraData='', $class='') {
+    public function getHtml($print = true, $extraData = '', $class = '')
+    {
         if (!$this->key) {
             return;
         }
@@ -29,22 +33,25 @@ class ReCaptcha extends Captcha{
         if ($this->keyType == 'v2') {
             wp_enqueue_script('tsjippy_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
-            ?>
-            <div class='g-recaptcha $class' data-sitekey='<?php echo esc_attr($this->key);?>' <?php echo esc_attr($extraData);?> required>
+?>
+            <div class='g-recaptcha $class' data-sitekey='<?php echo esc_attr($this->key); ?>' <?php echo esc_attr($extraData); ?> required>
             </div>
-            <?php
-        }else{
+        <?php
+        } else {
             wp_enqueue_script('tsjippy_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
             ob_start();
-            ?>
+        ?>
             <input type='hidden' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>
             <script>
-                document.querySelectorAll(' .submit-wrapper .form-submit').foreach (el=>el.disabled=true);
+                document.querySelectorAll(' .submit-wrapper .form-submit').foreach(el => el.disabled = true);
+
                 function onloadCallback() {
-                    grecaptcha.ready(function () {
-                        setInterval(function () {
-                            grecaptcha.execute('<?php echo esc_attr($this->key);?>', {action: 'validate_captcha'}).then(function (token) {
-                                document.querySelectorAll(' .submit-wrapper .form-submit[disabled]').foreach (el=>el.disabled=false);
+                    grecaptcha.ready(function() {
+                        setInterval(function() {
+                            grecaptcha.execute('<?php echo esc_attr($this->key); ?>', {
+                                action: 'validate_captcha'
+                            }).then(function(token) {
+                                document.querySelectorAll(' .submit-wrapper .form-submit[disabled]').foreach(el => el.disabled = false);
                                 console.log('refreshed token:', token);
                                 document.getElementById('g-recaptcha-response').value = token;
                             });
@@ -52,7 +59,7 @@ class ReCaptcha extends Captcha{
                     });
                 }
             </script>
-            <?php
+<?php
         }
 
         if (!$print) {
@@ -63,7 +70,8 @@ class ReCaptcha extends Captcha{
     /**
      * Verifies a recaptcha token from $_REQUEST
      */
-    public function verify() {
+    public function verify()
+    {
         if (empty($_REQUEST['g-recaptcha-response'])) {
             return false;
         }
