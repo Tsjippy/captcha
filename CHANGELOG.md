@@ -2,6 +2,17 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+
+### Changed
+
+### Fixed
+
+### Updated
+
+## [10.0.7.0] - 2026-06-05
+
+
+### Added
 - now shippid with shared functionality
 
 ### Changed
@@ -11,8 +22,6 @@
 ### Fixed
 - spacing problem
 - foreach error
-
-### Updated
 
 ## [10.0.7] - 2026-06-01
 
