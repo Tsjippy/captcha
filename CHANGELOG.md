@@ -2,6 +2,7 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- now shippid with shared functionality
 
 ### Changed
 - comply to coding standards
