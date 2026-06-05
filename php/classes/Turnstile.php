@@ -58,7 +58,7 @@ class Turnstile extends Captcha
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll(' .cf-turnstile.now').foreach(el => loadTurnstile(el));
+                document.querySelectorAll(' .cf-turnstile.now').forEach(el => loadTurnstile(el));
             });
 
             // Load turnstile as soon as we click on the form
@@ -81,9 +81,9 @@ class Turnstile extends Captcha
                         }
 
                         // Disable form submit
-                        form.querySelectorAll('button').foreach(button => button.disabled = true);
+                        form.querySelectorAll('button').forEach(button => button.disabled = true);
 
-                        form.querySelectorAll(' .button').foreach(button => button.classList.add('hidden'));
+                        form.querySelectorAll(' .button').forEach(button => button.classList.add('hidden'));
 
                         // Load the turnstile
                         loadTurnstile(turnstileDiv);
@@ -96,9 +96,9 @@ class Turnstile extends Captcha
                     sitekey: '<?php echo esc_attr($this->key); ?>',
                     callback: function(token) {
                         // Enable form submit again
-                        document.querySelectorAll('button').foreach(button => button.disabled = false);
+                        document.querySelectorAll('button').forEach(button => button.disabled = false);
 
-                        document.querySelectorAll(' .button.hidden').foreach(button => button.classList.remove('hidden'));
+                        document.querySelectorAll(' .button.hidden').forEach(button => button.classList.remove('hidden'));
 
                         console.log('Challenge completed:', token);
                     }
