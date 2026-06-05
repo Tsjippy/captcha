@@ -14,7 +14,7 @@ namespace TSJIPPY\CAPTCHA;
  * Plugin URI:            https://github.com/Tsjippy/captcha/
  * Tested:                6.9
  * TextDomain:            tsjippy
- * Requires Plugins:    tsjippy-shared-functionality
+ * Requires Plugins:    
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  *
@@ -32,4 +32,6 @@ define(__NAMESPACE__ . '\PLUGINSLUG', str_replace('tsjippy-', '', basename(__FIL
 define(__NAMESPACE__ . '\SETTINGS', get_option('tsjippy_captcha_settings', []));
 
 // Load shared code
-//require_once(__DIR__  . '/shared_functionality/shared-functionality.php');
+if(file_exists(__DIR__  . '/shared_functionality/loader.php')){
+    require_once(__DIR__  . '/shared_functionality/loader.php');
+}
