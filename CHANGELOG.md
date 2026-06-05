@@ -6,9 +6,17 @@
 ### Changed
 
 ### Fixed
-- space before dot bug
 
 ### Updated
+
+## [10.0.7.7.3] - 2026-06-05
+
+
+## [10.0.7.7.2] - 2026-06-05
+
+
+### Fixed
+- space before dot bug
 
 ## [10.0.7.7.1] - 2026-06-05
 
