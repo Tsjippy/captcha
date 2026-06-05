@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- space before dot bug
 
 ### Updated
 
