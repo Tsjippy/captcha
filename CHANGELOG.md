@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- bug when no captcha settings given
 
 ### Updated
 
