@@ -4,11 +4,16 @@
 ### Added
 
 ### Changed
-- namespaced all constants
 
 ### Fixed
 
 ### Updated
+
+## [10.0.7.9.2] - 2026-06-06
+
+
+### Changed
+- namespaced all constants
 
 ## [10.0.7.9.1] - 2026-06-06
 
