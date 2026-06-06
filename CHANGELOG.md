@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- bug when no captcha settings given
 
 ### Updated
+
+## [10.0.7.8] - 2026-06-06
+
+
+### Fixed
+- bug when no captcha settings given
 
 ## [10.0.7.7.4] - 2026-06-05
 
