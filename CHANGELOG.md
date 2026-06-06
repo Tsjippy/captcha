@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- namespaced all constants
 
 ### Fixed
 
