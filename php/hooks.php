@@ -14,7 +14,7 @@ function loginForm()
 {
     $captcha    = determineCaptchaType();
 
-    if ($captcha->login) {
+    if ($captcha && $captcha->login) {
         $captcha->addHtml();
     }
 }
@@ -41,7 +41,7 @@ function registerForm()
 {
     $captcha    = determineCaptchaType();
 
-    if ($captcha->register) {
+    if ($captcha && $captcha->register) {
         $captcha->addHtml();
     }
 }
@@ -59,11 +59,12 @@ function registrationFormfilter($user)
  * Add the captcha HTML to the password reset form
  */
 add_action('resetpass_form', __NAMESPACE__ . '\resetForm');
+add_action('lostpassword_form', __NAMESPACE__ . '\resetForm');
 function resetForm()
 {
     $captcha    = determineCaptchaType();
 
-    if ($captcha->password) {
+    if ($captcha && $captcha->password) {
         $captcha->addHtml();
     }
 }
@@ -85,7 +86,7 @@ function commentForm()
 {
     $captcha    = determineCaptchaType();
 
-    if ($captcha->comment) {
+    if ($captcha && $captcha->comment) {
         $captcha->addHtml();
     }
 }
