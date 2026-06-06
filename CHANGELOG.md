@@ -2,13 +2,18 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- shared functionality loader
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [10.0.7.7.4] - 2026-06-05
+
+
+### Added
+- shared functionality loader
 
 ## [10.0.7.7.3] - 2026-06-05
 
