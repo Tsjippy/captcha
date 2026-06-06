@@ -81,7 +81,7 @@ class ReCaptcha extends Captcha
         $queryData = [
             'secret'     => $this->secret,
             'response'     => sanitize_text_field(wp_unslash($_REQUEST['g-recaptcha-response'])),
-            'remoteip'     => sanitize_text_field(wp_unslash((isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : $_SERVER['REMOTE_ADDR'])))
+            'remoteip'     => sanitize_text_field(wp_unslash((isset($_SERVER["HTTP_CF_CONNECTING_IP"]) ? $_SERVER["HTTP_CF_CONNECTING_IP"] : ($_SERVER['REMOTE_ADDR'] ?? ''))))
         ];
 
         // Collect and build POST data
