@@ -131,7 +131,7 @@ class Turnstile extends Captcha
             return false;
         }
 
-        $turnstileToken = sanitize_text_field(wp_unslash($_REQUEST['cf-turnstile-response']));
+        $turnstileToken = TSJIPPY\sanitize($_REQUEST['cf-turnstile-response']);
 
         // Do not verify again if already verified
         if (\TSJIPPY\getFromTransient(substr($turnstileToken, 0, 170)) == $turnstileToken) {
