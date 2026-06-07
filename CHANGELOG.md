@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- sanitize all posts and get vars
 
 ### Fixed
 
