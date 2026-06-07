@@ -9,121 +9,33 @@
 
 ### Updated
 
-## [10.0.7.9.2] - 2026-06-06
 
-
-### Changed
-- namespaced all constants
-
-## [10.0.7.9.1] - 2026-06-06
-
-
-## [10.0.7.9.0] - 2026-06-06
-
-
-### Updated
-- readme
-
-## [10.0.7.9] - 2026-06-06
-
-
-## [10.0.7.8] - 2026-06-06
-
-
-### Fixed
-- bug when no captcha settings given
-
-## [10.0.7.7.4] - 2026-06-05
-
-
-### Added
-- shared functionality loader
-
-## [10.0.7.7.3] - 2026-06-05
-
-
-## [10.0.7.7.2] - 2026-06-05
-
-
-### Fixed
-- space before dot bug
-
-## [10.0.7.7.1] - 2026-06-05
-
-
-## [10.0.7.7.0] - 2026-06-05
-
-
-## [10.0.7.7] - 2026-06-05
-
-
-## [10.0.7.6] - 2026-06-05
-
-
-## [10.0.7.5] - 2026-06-05
-
-
-## [10.0.7.4] - 2026-06-05
-
-
-## [10.0.7.3] - 2026-06-05
-
-
-## [10.0.7.2] - 2026-06-05
-
-
-## [10.0.7.1] - 2026-06-05
-
-
-## [10.0.7.0] - 2026-06-05
-
-
+## [10.0.7] - 2026-06-01
 ### Added
 - now shippid with shared functionality
+- shared functionality loader
 
 ### Changed
 - comply to coding standards
 - code layout
+- namespaced all constants
+- merged hooks.md into readme.md
 
 ### Fixed
 - spacing problem
 - foreach error
+- bug when no captcha settings given
+- space before dot bug
 
-## [10.0.7] - 2026-06-01
-
-
-### Changed
-- merged hooks.md into readme.md
-
-## [10.0.6.9] - 2026-05-30
-
-
-### Changed
-- readme update
-
-## [10.0.6.8] - 2026-05-30
-
-
-## [10.0.6.7] - 2026-05-30
-
-
-## [10.0.6.5] - 2026-05-30
-
-
-## [10.0.6.3] - 2026-05-29
-
-
-## [10.0.6.2] - 2026-05-29
-
-
-## [10.0.6.1] - 2026-05-29
+### Updated
+- readme
 
 
 ## [10.0.6] - 2026-05-29
 
-
 ### Changed
 - do not store get_plugin_data in global variable
+- readme update
 
 ## [10.0.5] - 2026-05-29
 
