@@ -1,6 +1,7 @@
 <?php
 
 namespace TSJIPPY\CAPTCHA;
+use TSJIPPY;
 
 if (! defined('ABSPATH')) {
     exit;
@@ -29,7 +30,7 @@ function restApiInit()
         TSJIPPY\RESTAPIPREFIX . '/captcha',
         '/get_turnstile_key',
         array(
-            'methods'              => 'GET',
+            'methods'              => 'POST',
             'callback'             => function(){
                 $turnstile  = new Turnstile();
                 return $turnstile->key;
