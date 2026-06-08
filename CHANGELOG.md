@@ -5,6 +5,7 @@
 
 ### Changed
 - sanitize all posts and get vars
+- moved js from php to js files
 
 ### Fixed
 
