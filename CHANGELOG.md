@@ -6,6 +6,7 @@
 ### Changed
 - sanitize all posts and get vars
 - moved js from php to js files
+- removed plugin installer code
 
 ### Fixed
 - get turnstile key over AJAX
