@@ -25,8 +25,10 @@ class AdminMenu extends ADMIN\SubAdminMenu
 
     public function settings($parent)
     {
+        wp_enqueue_script('tsjippy_captcha_admin', TSJIPPY\pathToUrl(PLUGINPATH . 'js/admin.min.js'), array(), PLUGINVERSION, true);
+
         ob_start();
-?>
+        ?>
         <h4 style="margin-bottom: 0px;">Choose Captcha Engine</h4>
         <label>
             <input type="radio" id="recaptcha" name="captcha" value="recaptcha" <?php echo ($this->settings['captcha'] ?? '') == 'recaptcha' ? 'checked' : ''; ?>>
@@ -195,18 +197,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
             </table>
         </div>
         <br>
-
-        <script>
-            function captchaSelected(e) {
-                document.querySelectorAll(`.captcha-options-wrapper`).forEach(el => el.classList.add("hidden"));
-                document.querySelector(`.captcha-options-wrapper.${e.target.value}`).classList.remove("hidden");
-            }
-
-            document.getElementById("recaptcha").addEventListener('change', captchaSelected);
-
-            document.getElementById("turnstile").addEventListener('change', captchaSelected);
-        </script>
-<?php
+        <?php
 
         TSJIPPY\addRawHtml(ob_get_clean(), $parent, 'beforeEnd');
 

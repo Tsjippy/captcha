@@ -1,0 +1,18 @@
+{
+  "name": "captcha",
+  "version": "1.0.0",
+  "description": "captcha",
+  "main": "./captcha.js",
+  "scripts": {
+    "admin": "webpack --entry ./admin.js --output-path . --output-filename admin.min.js --progress --mode=production --devtool source-map",
+    "turnstile": "webpack --entry ./turnstile.js --output-path . --output-filename turnstile.min.js --progress --mode=production --devtool source-map",
+    "recaptcha": "webpack --entry ./recaptcha.js --output-path . --output-filename recaptcha.min.js --progress --mode=production --devtool source-map",
+    "all": "run-p admin turnstile recaptcha"
+  },
+  "author": "Ewald Harmsen",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.107.2",
+    "webpack-cli": "^4.10.0"
+  }
+}

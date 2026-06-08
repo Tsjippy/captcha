@@ -45,7 +45,8 @@ class Turnstile extends Captcha
 
         $url    = "https://challenges.cloudflare.com/turnstile/v0/api.js"; // online url, disallowed by wp
         //$url    = TSJIPPY\pathToUrl(PLUGINPATH. 'js/turnstile.min.js'); // Does not work
-        wp_enqueue_script('tsjippy_turnstile', "$url?render=explicit", [], 0.1, ['strategy' => 'defer', 'in_footer' => true]);
+        wp_enqueue_script('tsjippy_turnstile_api', "$url?render=explicit", [], 0.1, ['strategy' => 'defer', 'in_footer' => true]);
+        wp_enqueue_script('tsjippy_turnstile', TSJIPPY\pathToUrl(PLUGINPATH . 'js/turnstile.min.js'), [], PLUGINVERSION, true);
 
         $tsjippyCaptchaHasRun    = true;
 
@@ -53,7 +54,7 @@ class Turnstile extends Captcha
             ob_start();
         }
 
-?>
+        ?>
 
         <style>
             #login{
@@ -62,57 +63,7 @@ class Turnstile extends Captcha
         </style>
         
         <div class='cf-turnstile <?php echo esc_attr($class); ?>' <?php echo esc_attr($extraData); ?>></div>
-
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
-            });
-
-            // Load turnstile as soon as we click on the form
-            document.addEventListener("click", async function(event) {
-                let target = event.target;
-                let form = target.closest('form');
-                if (form != null || target.classList.contains('cf-turnstile')) {
-                    if (form == null) {
-                        form = document.querySelector(target.dataset.form);
-                    }
-
-                    let turnstileDiv = form.querySelector('div.cf-turnstile');
-
-                    // Only load if not already loaded
-                    if (turnstileDiv != null && turnstileDiv.innerHTML == '') {
-                        event.stopImmediatePropagation();
-
-                        if (turnstileDiv.closest('.hidden') != null) {
-                            turnstileDiv.closest('.hidden').classList.remove('hidden');
-                        }
-
-                        // Disable form submit
-                        form.querySelectorAll('button').forEach(button => button.disabled = true);
-
-                        form.querySelectorAll('.button').forEach(button => button.classList.add('hidden'));
-
-                        // Load the turnstile
-                        loadTurnstile(turnstileDiv);
-                    }
-                }
-            });
-
-            function loadTurnstile(target) {
-                turnstile.render(target, {
-                    sitekey: '<?php echo esc_attr($this->key); ?>',
-                    callback: function(token) {
-                        // Enable form submit again
-                        document.querySelectorAll('button').forEach(button => button.disabled = false);
-
-                        document.querySelectorAll('.button.hidden').forEach(button => button.classList.remove('hidden'));
-
-                        console.log('Challenge completed:', token);
-                    }
-                });
-            }
-        </script>
-<?php
+        <?php
 
         if (!$print) {
             return ob_get_clean();
