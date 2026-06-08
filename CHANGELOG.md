@@ -8,6 +8,7 @@
 - moved js from php to js files
 
 ### Fixed
+- get turnstile key over AJAX
 
 ### Updated
 
