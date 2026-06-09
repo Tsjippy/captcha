@@ -4,15 +4,21 @@
 ### Added
 
 ### Changed
+
+### Fixed
+
+### Updated
+
+## [10.0.8] - 2026-06-09
+
+
+### Changed
 - sanitize all posts and get vars
 - moved js from php to js files
 - removed plugin installer code
 
 ### Fixed
 - get turnstile key over AJAX
-
-### Updated
-
 
 ## [10.0.7] - 2026-06-01
 ### Added
