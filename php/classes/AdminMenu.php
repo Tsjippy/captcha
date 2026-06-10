@@ -37,7 +37,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
         <br>
         <label>
             <input type="radio" id="turnstile" name="captcha" value="turnstile" <?php echo ($this->settings['captcha'] ?? '') == 'turnstile'  ? 'checked' : ''; ?>>
-            Turnstile by Cloudflare (<a href='https://www.cloudflare.com/en-gb/products/turnstile/#Page-Pricing-AS' target='_blank'>See here</a>)
+            Turnstile by Cloudflare (<a href='https://www.cloudflare.com/products/turnstile/' target='_blank'>See here</a>)
         </label>
 
         <br>
