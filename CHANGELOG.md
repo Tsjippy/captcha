@@ -4,6 +4,7 @@
 ### Added
 
 ### Changed
+- moved style to js
 
 ### Fixed
 - shared code loader
