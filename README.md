@@ -12,3 +12,8 @@ To be able to use them you need to set up an account with them. See [here](https
 
 == External Services ==
 This plugin relies on either Google's ReCaptcha or Cloudflare's Turnstile to generate a challenge for users to comlete to verify they are human ánd send that the result of that to their servers to verify.
+
+== Issues ==
+Please file any issues on the wp forum or directly on Github: 
+* [captcha](https://github.com/Tsjippy/captcha/issues)
+* [shared functionality](https://github.com/Tsjippy/shared-functionality/issues)

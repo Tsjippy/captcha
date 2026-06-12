@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
+
+    document.querySelectorAll(`#login`).forEach(el => { el.style.width = '350px';});
 });
 
 // Load turnstile as soon as we click on the form

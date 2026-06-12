@@ -54,14 +54,7 @@ class Turnstile extends Captcha
             ob_start();
         }
 
-        ?>
-
-        <style>
-            #login{
-                width: 350px;
-            }
-        </style>
-        
+        ?>        
         <div class='cf-turnstile <?php echo esc_attr($class); ?>' <?php echo esc_attr($extraData); ?>></div>
         <?php
 
