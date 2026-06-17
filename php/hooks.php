@@ -23,7 +23,7 @@ function loginForm()
  * Verify the captcha result
  */
 add_filter('authenticate', __NAMESPACE__ . '\loginFormFilter', 99);
-add_filter('tsjippy-after-user-check', __NAMESPACE__ . '\loginFormFilter', 99);
+add_filter('tsjippy-login-after-user-check', __NAMESPACE__ . '\loginFormFilter', 99);
 function loginFormFilter($user)
 {
     if (is_wp_error($user)) {
