@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- addElement code
 
 ### Updated
+
+## [10.2.4] - 2026-06-23
+
+
+### Fixed
+- addElement code
 
 ## [10.2.3] - 2026-06-23
 
