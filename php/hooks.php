@@ -159,7 +159,7 @@ function captchaVerification($var, $formType)
 /**
  * Validates a Form Captcha Form Submit
  */
-add_filter('tsjippy-before-saving-formdata', __NAMESPACE__ . '\verifyFormCaptcha', 10, 2);
+add_filter('tsjippy-forms-before-inserting-formdata', __NAMESPACE__ . '\verifyFormCaptcha', 10, 2);
 function verifyFormCaptcha($verification, $object)
 {
     if ($object->getElementByType('turnstile')) {
