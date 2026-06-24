@@ -5,3 +5,4 @@ on:
 jobs:
   call-shared-workflow:
     uses: Tsjippy/shared-functionality/.github/workflows/SharedUpdateVersion.yml@main
+    secrets: inherit
