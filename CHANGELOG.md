@@ -2,13 +2,18 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- run activation function
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [10.2.8.7] - 2026-06-24
+
+
+### Added
+- run activation function
 
 ## [10.2.8.6] - 2026-06-24
 
