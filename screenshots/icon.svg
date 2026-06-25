@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+
+  <!-- Gradient -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3aa0c3"/>
+      <stop offset="100%" stop-color="#2f8fa3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="256" height="256" fill="url(#bg)"/>
+
+  <!-- Soft geometric shapes -->
+  <polygon points="0,120 80,40 80,200" fill="white" opacity="0.08"/>
+  <polygon points="256,120 200,20 200,220" fill="white" opacity="0.08"/>
+
+  <!-- Title -->
+  <text x="128" y="110"
+        font-family="Arial, sans-serif"
+        font-size="42"
+        fill="white"
+        text-anchor="middle"
+        letter-spacing="2">
+    tsjippy
+  </text>
+
+  <!-- Subtitle -->
+  <text x="128" y="150"
+        font-family="Arial, sans-serif"
+        font-size="22"
+        fill="#7fa5a8"
+        text-anchor="middle">
+    captcha
+  </text>
+
+  <!-- Left icon (captcha hint) -->
+  <circle cx="70" cy="200" r="16"
+          stroke="#66c2ff"
+          stroke-width="4"
+          fill="none"/>
+
+  <!-- Right icon (turnstile hint) -->
+  <rect x="170" y="185" width="40" height="30" rx="12"
+        fill="#ff8a2a" opacity="0.9"/>
+
+</svg>
