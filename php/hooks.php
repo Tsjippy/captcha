@@ -160,15 +160,15 @@ function captchaVerification($var, $formType)
  * Validates a Form Captcha Form Submit
  */
 add_filter('tsjippy-forms-before-inserting-formdata', __NAMESPACE__ . '\verifyFormCaptcha', 10, 2);
-function verifyFormCaptcha($verification, $object)
+function verifyFormCaptcha($request, $object)
 {
     if ($object->getElementByType('turnstile')) {
         $captcha    = new Turnstile();
     } elseif ($object->getElementByType('recaptcha')) {
         $captcha    = new Recaptcha();
     } else {
-        return $verification;
+        return $request;
     }
 
-    return $captcha->verify($verification);
+    return $captcha->verify($request);
 }
