@@ -53,15 +53,11 @@ class AdminMenu extends ADMIN\SubAdminMenu
             <label>
                 API key type<br>
                 <label>
-                    <input type='radio' name='recaptcha[keytype]' value='v2' <?php if (($this->settings['recaptcha']["keytype"] ?? '') == 'v2') {
-                                                                                    echo 'checked';
-                                                                                } ?>>
+                    <input type='radio' name='recaptcha[keytype]' value='v2' <?php if (($this->settings['recaptcha']["keytype"] ?? '') == 'v2') echo 'checked'; ?>>
                     v2
                 </label>
                 <label>
-                    <input type='radio' name='recaptcha[keytype]' value='v3' <?php if (($this->settings['recaptcha']["keytype"] ?? '') == 'v3') {
-                                                                                    echo 'checked';
-                                                                                } ?>>
+                    <input type='radio' name='recaptcha[keytype]' value='v3' <?php if (($this->settings['recaptcha']["keytype"] ?? '') == 'v3') echo 'checked'; ?>>
                     v3 / Enterprise
                 </label>
             </label>
@@ -80,9 +76,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="recaptcha[login]" <?php if (isset($this->settings['recaptcha']['login'])) {
-                                                                                echo 'checked';
-                                                                            } ?>>
+                            <input type="checkbox" name="recaptcha[login]" <?php if (isset($this->settings['recaptcha']['login'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -93,9 +87,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="recaptcha[password]" <?php if (isset($this->settings['recaptcha']['password'])) {
-                                                                                    echo 'checked';
-                                                                                } ?>>
+                            <input type="checkbox" name="recaptcha[password]" <?php if (isset($this->settings['recaptcha']['password'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -106,9 +98,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="recaptcha[newuser]" <?php if (isset($this->settings['recaptcha']['newuser'])) {
-                                                                                    echo 'checked';
-                                                                                } ?>>
+                            <input type="checkbox" name="recaptcha[newuser]" <?php if (isset($this->settings['recaptcha']['newuser'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -119,9 +109,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="recaptcha[comment]" <?php if (isset($this->settings['recaptcha']['comment'])) {
-                                                                                    echo 'checked';
-                                                                                } ?>>
+                            <input type="checkbox" name="recaptcha[comment]" <?php if (isset($this->settings['recaptcha']['comment'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -148,9 +136,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="turnstile[login]" value=1 <?php if (isset($this->settings['turnstile']['login'])) {
-                                                                                        echo 'checked';
-                                                                                    } ?>>
+                            <input type="checkbox" name="turnstile[login]" value=1 <?php if (isset($this->settings['turnstile']['login'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -161,9 +147,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="turnstile[password]" value=1 <?php if (isset($this->settings['turnstile']['password'])) {
-                                                                                            echo 'checked';
-                                                                                        } ?>>
+                            <input type="checkbox" name="turnstile[password]" value=1 <?php if (isset($this->settings['turnstile']['password'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -174,9 +158,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="turnstile[newuser]" value=1 <?php if (isset($this->settings['turnstile']['newuser'])) {
-                                                                                            echo 'checked';
-                                                                                        } ?>>
+                            <input type="checkbox" name="turnstile[newuser]" value=1 <?php if (isset($this->settings['turnstile']['newuser'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
@@ -187,9 +169,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
                     </td>
                     <td>
                         <label class="switch">
-                            <input type="checkbox" name="turnstile[comment]" value=1 <?php if (isset($this->settings['turnstile']['comment'])) {
-                                                                                            echo 'checked';
-                                                                                        } ?>>
+                            <input type="checkbox" name="turnstile[comment]" value=1 <?php if (isset($this->settings['turnstile']['comment'])) echo 'checked'; ?>>
                             <span class="slider round"></span>
                         </label>
                     </td>
