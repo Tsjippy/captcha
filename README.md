@@ -10,6 +10,13 @@ The project uses:
 Which one of the two providers is your choice. You do not have to use both.  
 To be able to use them you need to set up an account with them. See [here](https://www.google.com/recaptcha/admin/create) foor Google ReCaptcha and [here](https://www.cloudflare.com/products/turnstile/) for Cloudflare Turnstile.
 
+== Screenshots ==
+1. Cloudflare Captcha on Login Form
+2. Cloudflare Captcha on Password Reset Form
+3. Cloudflare Captcha on Registration Form
+4. Cloudflare Captcha on Comment Form
+5. Plugin Settings
+
 == External Services ==
 This plugin relies on either Google's ReCaptcha or Cloudflare's Turnstile to generate a challenge for users to comlete to verify they are human ánd send that the result of that to their servers to verify.
 
