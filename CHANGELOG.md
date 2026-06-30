@@ -4,6 +4,7 @@
 ### Added
 - attribute escaping
 - activate shared code function
+- screenshots entry to readme
 
 ### Changed
 
