@@ -2,15 +2,20 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
-- attribute escaping
-- activate shared code function
-- screenshots entry to readme
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [11.0.0] - 2026-07-01
+
+
+### Added
+- attribute escaping
+- activate shared code function
+- screenshots entry to readme
 
 ## [10.3.0] - 2026-06-26
 
