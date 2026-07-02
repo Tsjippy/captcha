@@ -24,6 +24,12 @@ function loginForm()
  */
 add_filter('authenticate', __NAMESPACE__ . '\loginFormFilter', 99);
 add_filter('tsjippy-login-after-user-check', __NAMESPACE__ . '\loginFormFilter', 99);
+/**
+ * Verify the captcha result
+ * 
+ * @param   \WP_User|\WP_Error    $user       The user object or an error object
+ * @return  \WP_User|\WP_Error                The user object or an error object
+ */
 function loginFormFilter($user)
 {
     if (is_wp_error($user)) {
@@ -37,6 +43,9 @@ function loginFormFilter($user)
  * Add the captcha HTML to the register form
  */
 add_action('register_form', __NAMESPACE__ . '\registerForm');
+/**
+ * Add the captcha HTML to the register form
+ */
 function registerForm()
 {
     $captcha    = determineCaptchaType();
@@ -50,6 +59,12 @@ function registerForm()
  * Verify the captcha result
  */
 add_filter('registration_errors', __NAMESPACE__ . '\registrationFormfilter', 99);
+/**
+ * Verify the captcha result
+ * 
+ * @param   \WP_Error   $user       The user object or an error object
+ * @return  \WP_Error               The user object or an error object
+ */
 function registrationFormfilter($user)
 {
     return captchaVerification($user, 'register');
@@ -60,6 +75,9 @@ function registrationFormfilter($user)
  */
 add_action('resetpass_form', __NAMESPACE__ . '\resetForm');
 add_action('lostpassword_form', __NAMESPACE__ . '\resetForm');
+/**
+ * Add the captcha HTML to the password reset form
+ */
 function resetForm()
 {
     $captcha    = determineCaptchaType();
@@ -73,6 +91,12 @@ function resetForm()
  * Verify the captcha result
  */
 add_filter('lostpassword_errors', __NAMESPACE__ . '\passwordResetFormfilter', 99);
+/**
+ * Verify the captcha result
+ * 
+ * @param   \WP_Error   $user       The user object or an error object
+ * @return  \WP_Error               The user object or an error object
+ */
 function passwordResetFormfilter($user)
 {
     return captchaVerification($user, 'reset');
@@ -82,6 +106,9 @@ function passwordResetFormfilter($user)
  * Add the captcha HTML to the comment form
  */
 add_action('comment_form', __NAMESPACE__ . '\commentForm');
+/**
+ * Add the captcha HTML to the comment form
+ */
 function commentForm()
 {
     $captcha    = determineCaptchaType();
@@ -95,6 +122,12 @@ function commentForm()
  * Verify the captcha result
  */
 add_filter('pre_comment_approved', __NAMESPACE__ . '\commentFormfilter', 99);
+/**
+ * Verify the captcha result
+ * 
+ * @param   mixed       $approved   The comment approval status
+ * @return  mixed                   The comment approval status
+ */
 function commentFormfilter($approved)
 {
     return captchaVerification($approved, 'comment');
@@ -160,6 +193,13 @@ function captchaVerification($var, $formType)
  * Validates a Form Captcha Form Submit
  */
 add_filter('tsjippy-forms-before-inserting-formdata', __NAMESPACE__ . '\verifyFormCaptcha', 10, 2);
+/**
+ * Validates a Form Captcha Form Submit
+ *
+ * @param   array   $request    The form request data
+ * @param   object  $object     The form object
+ * @return  array|object        The form request data or an error object if verification failed
+ */
 function verifyFormCaptcha($request, $object)
 {
     if ($object->getElementByType('turnstile')) {
@@ -170,5 +210,5 @@ function verifyFormCaptcha($request, $object)
         return $request;
     }
 
-    return $captcha->verify($request);
+    return $captcha->verify();
 }

@@ -23,6 +23,12 @@ class AdminMenu extends ADMIN\SubAdminMenu
         parent::__construct($settings, $name);
     }
 
+    /**
+     * Add the settings page to the admin menu
+     *
+     * @param string $parent The parent menu slug
+     * @return bool True if the settings page was added, false otherwise
+     */
     public function settings($parent)
     {
         wp_enqueue_script('tsjippy_captcha_admin', TSJIPPY\pathToUrl(PLUGINPATH . 'js/admin.min.js'), array(), PLUGINVERSION, true);
@@ -184,16 +190,34 @@ class AdminMenu extends ADMIN\SubAdminMenu
         return true;
     }
 
+    /**
+     * Add the emails page to the admin menu
+     *
+     * @param string $parent The parent menu slug
+     * @return bool True if the emails page was added, false otherwise
+     */
     public function emails($parent)
     {
         return false;
     }
 
+    /**
+     * Add the data page to the admin menu
+     *
+     * @param string $parent The parent menu slug
+     * @return bool True if the data page was added, false otherwise
+     */
     public function data($parent)
     {
         return false;
     }
 
+    /**
+     * Add the functions page to the admin menu
+     *
+     * @param string $parent The parent menu slug
+     * @return bool True if the functions page was added, false otherwise
+     */
     public function functions($parent)
     {
         return false;

@@ -23,6 +23,9 @@ function addCaptchaUrls($urls)
 }
 
 add_action('rest_api_init', __NAMESPACE__ . '\restApiInit');
+/**
+ * Registers the REST API routes for the captcha plugin
+ */
 function restApiInit()
 {
     //Route for notification messages

@@ -8,9 +8,12 @@ if (! defined('ABSPATH')) {
 
 class ReCaptcha extends Captcha
 {
-    public $secretKey;
-    public $keyType;
+    public string $secretKey;
+    public string $keyType;
 
+    /**
+     * ReCaptcha constructor.
+     */
     public function __construct()
     {
         $this->settings   = SETTINGS['turnstile'] ?? [];
@@ -20,6 +23,15 @@ class ReCaptcha extends Captcha
         $this->secretKey  = $this->settings['secretkey'];
     }
 
+    /**
+     * Get the HTML for the captcha
+     *
+     * @param bool $print Whether to print the HTML or return it
+     * @param string $extraData Extra data to add to the captcha div
+     * @param string $class Extra class to add to the captcha div
+     *
+     * @return string The HTML for the captcha
+     */
     public function getHtml($print = true, $extraData = '', $class = '')
     {
         if (!$this->key) {

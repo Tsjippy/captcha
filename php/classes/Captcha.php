@@ -10,17 +10,23 @@ if (! defined('ABSPATH')) {
 
 abstract class Captcha
 {
-    public $settings;
-    public $key;
-    public $secret;
-    public $login;
-    public $register;
-    public $password;
-    public $comment;
+    public array $settings;
+    public string $key;
+    public string $secret;
+    public bool $login;
+    public bool $register;
+    public bool $password;
+    public bool $comment;
 
-
-    public function __construct() {}
-
+    /**
+     * Add the captcha to a form element
+     * 
+     * @param bool $print Whether to print the HTML or return it
+     * @param string $extraData Extra data to add to the captcha div
+     * @param string $class Extra class to add to the captcha div
+     * 
+     * @return string The HTML for the captcha 
+     */
     public function addHtml($print = true, $extraData = '', $class = '')
     {
         // If the action we are hooking in was called more than once, return.
@@ -35,8 +41,24 @@ abstract class Captcha
         return $this->getHtml($print, $extraData, $class);
     }
 
+    /**
+     * Get the HTML for the captcha
+     *
+     * @param bool $print Whether to print the HTML or return it
+     * @param string $extraData Extra data to add to the captcha div
+     * @param string $class Extra class to add to the captcha div
+     *
+     * @return string The HTML for the captcha
+     */
     abstract function getHtml($print, $extraData = '', $class = '');
 
+    /**
+     * Add the captcha to a form element
+     *
+     * @param array $args The arguments for the form element
+     *
+     * @return array The altered arguments for the form element
+     */
     public function addFormElement($args)
     {
         $html                 = $this->addHtml(false);
@@ -47,6 +69,11 @@ abstract class Captcha
 
     /**
      * Generic function to retrieve token status for captchas
+     * 
+     * @param string $verifyUrl The URL to verify the token
+     * @param array $data The data to send to the verification URL
+     * 
+     * @return object The response from the verification URL
      */
     public function verifyCaptcha($verifyUrl, $data)
     {
@@ -58,7 +85,7 @@ abstract class Captcha
     /**
      * Verifies a turnstile token from $_REQUEST
      *
-     * @return    bool|WP_Error            false if no token found|WP_Error if invalid token, true is success
+     * @return    bool|\WP_Error            false if no token found|WP_Error if invalid token, true is success
      */
     abstract function verify();
 }
