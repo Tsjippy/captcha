@@ -205,6 +205,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
      * Add the data page to the admin menu
      *
      * @param string $parent The parent menu slug
+     * 
      * @return bool True if the data page was added, false otherwise
      */
     public function data($parent)
