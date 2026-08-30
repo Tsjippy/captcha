@@ -202,9 +202,9 @@ add_filter('tsjippy-forms-before-inserting-formdata', __NAMESPACE__ . '\verifyFo
  */
 function verifyFormCaptcha($request, $object)
 {
-    if ($object->getElementByType('turnstile')) {
+    if ($object->getBlockByType('turnstile')) {
         $captcha    = new Turnstile();
-    } elseif ($object->getElementByType('recaptcha')) {
+    } elseif ($object->getBlockByType('recaptcha')) {
         $captcha    = new Recaptcha();
     } else {
         return $request;
