@@ -41,7 +41,7 @@ function registerBlocks() {
             'supports'        => array(
                 'autoRegister' => true,
             ),
-            "category" => "form-elements",
+            "category" => "form-blocks",
             "icon"     => "caution",
         )
     );
@@ -78,7 +78,7 @@ function registerBlocks() {
             'supports'        => array(
                 'autoRegister' => true,
             ),
-            "category" => "form-elements",
+            "category" => "form-blocks",
             "icon"     => "caution",
         )
     );

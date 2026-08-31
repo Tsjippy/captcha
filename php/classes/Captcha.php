@@ -19,7 +19,7 @@ abstract class Captcha
     public bool $comment;
 
     /**
-     * Add the captcha to a form element
+     * Add the captcha to a form block
      * 
      * @param bool $print Whether to print the HTML or return it
      * @param string $extraData Extra data to add to the captcha div
@@ -51,21 +51,6 @@ abstract class Captcha
      * @return string The HTML for the captcha
      */
     abstract function getHtml($print, $extraData = '', $class = '');
-
-    /**
-     * Add the captcha to a form element
-     *
-     * @param array $args The arguments for the form element
-     *
-     * @return array The altered arguments for the form element
-     */
-    public function addFormElement($args)
-    {
-        $html                 = $this->addHtml(false);
-        $args['submit_field'] = $html . $args['submit_field'];
-
-        return $args;
-    }
 
     /**
      * Generic function to retrieve token status for captchas
