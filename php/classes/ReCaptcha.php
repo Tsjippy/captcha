@@ -46,7 +46,7 @@ class ReCaptcha extends Captcha
             wp_enqueue_script('tsjippy_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
             ?>
-            <div class='g-recaptcha $class' data-sitekey='<?php echo esc_attr($this->key); ?>' <?php echo esc_attr($extraData); ?> required>
+            <div class='g-recaptcha <?php echo esc_attr($class);?>' data-sitekey='<?php echo esc_attr($this->key); ?>' <?php echo esc_attr($extraData); ?> required>
             </div>
             <?php
         } else {
