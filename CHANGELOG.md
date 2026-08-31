@@ -2,6 +2,7 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+- turnstile and recaptcha block
 
 ### Changed
 - element to block
