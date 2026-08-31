@@ -6,6 +6,7 @@
 
 ### Changed
 - element to block
+- renamed elements to blocks
 
 ### Fixed
 
