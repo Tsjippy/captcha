@@ -2,15 +2,22 @@
 ## [Unreleased] - yyyy-mm-dd
 
 ### Added
+
+### Changed
+
+### Fixed
+
+### Updated
+
+## [11.2.1] - 2026-08-31
+
+
+### Added
 - turnstile and recaptcha block
 
 ### Changed
 - element to block
 - renamed elements to blocks
-
-### Fixed
-
-### Updated
 
 ## [11.2.0] - 2026-08-23
 
