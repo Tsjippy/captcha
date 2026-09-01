@@ -8,14 +8,6 @@ if (! defined('ABSPATH')) {
     exit;
 }
 
-add_action('init', function() {
-        $block = \WP_Block_Type_Registry::get_instance()->get_registered(
-        'tsjippy-captcha/turnstile'
-    );
-
-    error_log(print_r($block, true));
-});
-
 function registerBlocks() {
     register_block_type(
         'tsjippy-captcha/recaptcha',
