@@ -6,6 +6,7 @@
 ### Changed
 
 ### Fixed
+- error log bug
 
 ### Updated
 
