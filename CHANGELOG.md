@@ -6,9 +6,14 @@
 ### Changed
 
 ### Fixed
-- error log bug
 
 ### Updated
+
+## [11.2.2] - 2026-09-01
+
+
+### Fixed
+- error log bug
 
 ## [11.2.1] - 2026-08-31
 
