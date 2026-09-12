@@ -10,7 +10,6 @@ namespace TSJIPPY\CAPTCHA;
  * AuthorURI:            harmseninnigeria.nl
  * Requires at least:    6.3
  * Requires PHP:         8.3
- * Tested up to:         7.0
  * Plugin URI:           https://github.com/Tsjippy/captcha/
  * TextDomain:           tsjippy
  * Requires Plugins:    
