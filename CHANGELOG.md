@@ -1,6 +1,14 @@
 # Changelog
 ## [Unreleased] - yyyy-mm-dd
+### Added
 
+### Changed
+
+### Fixed
+
+### Updated
+
+## [11.3.2]
 ### Added
 
 ### Changed
