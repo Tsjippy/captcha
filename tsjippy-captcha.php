@@ -11,6 +11,7 @@ namespace TSJIPPY\CAPTCHA;
  * Requires at least:    6.3
  * Requires PHP:         8.3
  * Plugin URI:           https://github.com/Tsjippy/captcha/
+ * Tested:               7.1
  * TextDomain:           tsjippy
  * Requires Plugins:    
  * License: GPLv2 or later
