@@ -1,13 +1,18 @@
 # Changelog
 ## [Unreleased] - yyyy-mm-dd
+
 ### Added
-- tested entry
 
 ### Changed
 
 ### Fixed
 
 ### Updated
+
+## [11.3.3] - 2026-09-14
+
+### Added
+- tested entry
 
 ## [11.3.2]
 ### Added
