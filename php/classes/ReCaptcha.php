@@ -43,16 +43,16 @@ class ReCaptcha extends Captcha
         }
 
         if ($this->keyType == 'v2') {
-            wp_enqueue_script('tsjippy_recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+            wp_enqueue_script_module('@tsjippy/recaptcha_v2', "https://www.google.com/recaptcha/api.js", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
             ?>
             <div class='g-recaptcha <?php echo esc_attr($class);?>' data-sitekey='<?php echo esc_attr($this->key); ?>' <?php echo esc_attr($extraData); ?> required>
             </div>
             <?php
         } else {
-            wp_enqueue_script('tsjippy_recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
+            wp_enqueue_script_module('@tsjippy/recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
-            wp_enqueue_script('tsjippy_recaptcha', TSJIPPY\pathToUrl(PLUGINPATH . 'js/recaptcha.min.js'), [], PLUGINVERSION, true);
+            wp_enqueue_script_module('@tsjippy/recaptcha', TSJIPPY\pathToUrl(PLUGINPATH . 'js/recaptcha.min.js'), [], PLUGINVERSION);
 
             ?>
             <input type='hidden' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>

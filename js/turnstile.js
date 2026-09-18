@@ -1,3 +1,7 @@
+import{
+  fetchRestApi
+} from "../../tsjippy-forms/js/form_submit_functions.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
 
@@ -35,7 +39,7 @@ document.addEventListener("click", async function(event) {
 });
 
 async function loadTurnstile(target) {
-    let response = await FormSubmit.fetchRestApi(
+    let response = await fetchRestApi(
       "captcha/get_turnstile_key"
     );
 
