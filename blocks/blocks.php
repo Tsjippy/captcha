@@ -13,6 +13,7 @@ function registerBlocks() {
         'tsjippy-captcha/recaptcha',
         array(
             'title'           => __( 'ReCaptcha', 'tsjippy' ),
+            'apiVersion' => 3,
             'attributes'      => array(
                 'size'    => array(
                     'label'   => __( 'Size', 'tsjippy' ),
@@ -42,6 +43,7 @@ function registerBlocks() {
         'tsjippy-captcha/turnstile',
         array(
             'title'           => __( 'Turnstile', 'tsjippy' ),
+            'apiVersion' => 3,
             'attributes'      => array(
                 'size'    => array(
                     'label'   => __( 'Size', 'tsjippy' ),
