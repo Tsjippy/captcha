@@ -32,7 +32,7 @@ class AdminMenu extends ADMIN\SubAdminMenu
      */
     public function settings($parent)
     {
-        wp_enqueue_script_module('@tsjippy/captcha_admin', TSJIPPY\pathToUrl(PLUGINPATH . 'js/admin.min.js'), array(), PLUGINVERSION);
+        wp_enqueue_script_module('@tsjippy/captcha_admin', TSJIPPY\pathToUrl(PLUGINPATH . 'js/admin' . TSJIPPY\JSEXTENSION), array(), PLUGINVERSION);
 
         ob_start();
         ?>

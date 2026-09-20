@@ -52,7 +52,7 @@ class ReCaptcha extends Captcha
         } else {
             wp_enqueue_script_module('@tsjippy/recaptcha_v3', "https://www.google.com/recaptcha/api.js?render=$this->key&onload=onloadCallback", [], PLUGINVERSION, ['strategy' => 'defer', 'in_footer' => true]);
 
-            wp_enqueue_script_module('@tsjippy/recaptcha', TSJIPPY\pathToUrl(PLUGINPATH . 'js/recaptcha.min.js'), [], PLUGINVERSION);
+            wp_enqueue_script_module('@tsjippy/recaptcha', TSJIPPY\pathToUrl(PLUGINPATH . 'js/recaptcha' . TSJIPPY\JSEXTENSION), [], PLUGINVERSION);
 
             ?>
             <input type='hidden' class='no-reset' name='g-recaptcha-response' id='g-recaptcha-response'>
