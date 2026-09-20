@@ -5,13 +5,13 @@ namespace TSJIPPY\CAPTCHA;
 /**
  * Plugin Name:          Tsjippy Captcha
  * Description:          This plugin makes it possible to enable and use captcha on forms made with the formbuilder or on the wordpress default forms (login, register, reset password, comment)
- * Version:              11.3.5
+ * Version:              11.3.6
  * Author:               Ewald Harmsen
  * AuthorURI:            harmseninnigeria.nl
  * Requires at least:    6.3
  * Requires PHP:         8.3
  * Plugin URI:           https://github.com/Tsjippy/captcha/
- * Tested:               7.1
+ * Tested:               7.1.1
  * TextDomain:           tsjippy
  * Requires Plugins:    
  * License: GPLv2 or later
