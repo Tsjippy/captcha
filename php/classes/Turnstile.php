@@ -59,7 +59,12 @@ class Turnstile extends Captcha
         $url    = "https://challenges.cloudflare.com/turnstile/v0/api.js"; // online url, disallowed by wp
         //$url    = TSJIPPY\pathToUrl(PLUGINPATH. 'js/turnstile' . TSJIPPY\JSEXTENSION); // Does not work
         wp_enqueue_script('tsjippy_turnstile_api', "$url?render=explicit", [], 0.1, ['strategy' => 'defer', 'in_footer' => true]);
-        wp_enqueue_script_module('@tsjippy/turnstile', TSJIPPY\pathToUrl(PLUGINPATH . 'js/turnstile' . TSJIPPY\JSEXTENSION), [], PLUGINVERSION);
+
+        $deps   = SCRIPT_DEBUG ? [
+            '@tsjippy/form_submit_functions'
+        ] :
+        [];
+        wp_enqueue_script_module('@tsjippy/turnstile', TSJIPPY\pathToUrl(PLUGINPATH . 'js/turnstile' . TSJIPPY\JSEXTENSION), $deps, PLUGINVERSION);
 
         $tsjippyCaptchaHasRun    = true;
 

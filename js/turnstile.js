@@ -1,6 +1,6 @@
 import{
   fetchRestApi
-} from "../../tsjippy-forms/js/form_submit_functions.js";
+} from "@tsjippy/form_submit_functions";
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.cf-turnstile.now').forEach(el => loadTurnstile(el));
