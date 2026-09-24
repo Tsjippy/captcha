@@ -21,7 +21,7 @@ document.addEventListener("click", async function(event) {
 
         // Only load if not already loaded
         if (turnstileDiv != null && turnstileDiv.innerHTML == '') {
-            event.stopImmediatePropagation();
+            event.stopPropagation();
 
             if (turnstileDiv.closest('.hidden') != null) {
                 turnstileDiv.closest('.hidden').classList.remove('hidden');

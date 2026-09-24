@@ -60,10 +60,9 @@ class Turnstile extends Captcha
         //$url    = TSJIPPY\pathToUrl(PLUGINPATH. 'js/turnstile' . TSJIPPY\JSEXTENSION); // Does not work
         wp_enqueue_script('tsjippy_turnstile_api', "$url?render=explicit", [], false, ['strategy' => 'defer', 'in_footer' => true]);
 
-        $deps   = SCRIPT_DEBUG ? [
+        $deps   = [
             '@tsjippy/form_submit_functions'
-        ] :
-        [];
+        ];
         wp_enqueue_script_module('@tsjippy/turnstile', TSJIPPY\pathToUrl(PLUGINPATH . 'js/turnstile' . TSJIPPY\JSEXTENSION), $deps, PLUGINVERSION);
 
         $tsjippyCaptchaHasRun    = true;
