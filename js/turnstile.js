@@ -50,8 +50,6 @@ async function loadTurnstile(target) {
             document.querySelectorAll('button').forEach(button => button.disabled = false);
 
             document.querySelectorAll('.button.hidden').forEach(button => button.classList.remove('hidden'));
-
-            console.log('Challenge completed:', token);
         }
     });
 }
